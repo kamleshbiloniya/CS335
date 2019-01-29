@@ -21,12 +21,12 @@ class MyLex(object):
 	identity = {'IDENTIFIER'}
 	comments = {'COMMENT'}
 
-	tokens =  list(operators) + list(types) + \
-	              list(identity) + list(comments) + list(reserved.values())
+	tokens =  list(comments) + list(operators) + list(types) + \
+	              list(identity)  + list(reserved.values())
 
 	# Token definitions
 
-	# t_ignore_COMMENT = r'(/\*([^*]|\n|(\*+([^*/]|\n])))*\*+/)|(//.*)'
+	t_COMMENT = r'(/\*([^*]|\n|(\*+([^*/]|\n])))*\*+/)|(//.*)'
 	t_ignore = ' \t'
 	# t_WSPACE = r'\s'
 	t_PLUS = r'\+'
@@ -101,10 +101,11 @@ class MyLex(object):
 	# 	self.f.write("&nbsp")
 	# 	print("hiiii")
 		# print("ok")
-	@TOKEN(comments)
-	def t_COMMENT(self,t):
-		r'(/\*([^*]|\n|(\*+([^*/]|\n])))*\*+/)|(//.*)'
-		print(t.value)
+	# @TOKEN(comments)
+	# def t_COMMENT(self,t):
+	# 	# r'(/\*([^*]|\n|(\*+([^*/]|\n])))*\*+/)|(//.*)'
+	# 	r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'
+	# 	print("comment..")
 	@TOKEN(identifier_lit)
 	def t_IDENTIFIER(self,t):
 		t.type = self.reserved.get(t.value, 'IDENTIFIER')
@@ -162,7 +163,7 @@ class MyLex(object):
 	def t_NEWLINE(self, t):
 		# r'\n'
 		self.row = t.lexpos
-		self.col = 0;
+		self.col = 1;
 		print("hello at %d"% self.row)
 		self.f.write("</br>")
 		t.lexer.lineno +=1
@@ -199,9 +200,12 @@ class MyLex(object):
 					while (tmp>self.col):
 						self.f.write("&nbsp")
 						self.col+=1
-					self.col += len(tok.value)
+					self.col += len(str(tok.value))
 					# self.f.write("</p>\r\n<p>")
-					self.f.write("%s"%tok.value)
+					if(tok.type == 'STRING'):
+						self.f.write("\"%s\""%tok.value)
+					else:
+						self.f.write("%s"%tok.value)
 					# self.f.write("<label style='color:")
 					# self.f.write("%s"% self.dict[str(tok.type)])
 					# self.f.write("'>%s</label> "%tok.value)
@@ -210,8 +214,11 @@ class MyLex(object):
 					while (tmp>self.col):
 						self.f.write("&nbsp")
 						self.col+=1
-					self.col += len(tok.value)
-					self.f.write("%s"%tok.value)
+					self.col += len(str(tok.value))
+					if(tok.type == 'STRING'):
+						self.f.write("\"%s\""%tok.value)
+					else:
+						self.f.write("%s"%tok.value)
 					# self.f.write("<label style='color:")
 					# self.f.write("%s"% self.dict[str(tok.type)])
 					# self.f.write("'>%s</label> "%tok.value)
