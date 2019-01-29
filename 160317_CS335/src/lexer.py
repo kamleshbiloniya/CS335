@@ -10,7 +10,7 @@ class MyLex(object):
 	# wspace = {'WSPACE'}
 
 	keywords = {'STRUCT', 'FUNC', 'CONST', 'TYPE', 'VAR', 'IF', 'ELSE', 'SWITCH', 'CASE', 'DEFAULT', 'FOR', 'RANGE', 'RETURN', 'BREAK', 'CONTINUE', 'GOTO', 'PACKAGE', 'IMPORT' }
-	operators = {'PLUS', 'MINUS', 'STAR', 'DIVIDE', 'MOD', 'ASSIGN', 'AND', 'LOGICAL_AND', 'INCR', 'DECR', 'LPAREN', 'RPAREN', 'OR', 'XOR', 'LSHIFT', 'RSHIFT', 'PLUS_ASSIGN', 'MINUS_ASSIGN', 'STAR_ASSIGN', 'DIVIDE_ASSIGN', 'MOD_ASSIGN', 'AND_XOR', 'AND_ASSIGN', 'OR_ASSIGN', 'XOR_ASSIGN', 'LSHIFT_ASSIGN', 'RSHIFT_ASSIGN', 'AND_XOR_ASSIGN', 'LOGICAL_OR', 'EQUALS', 'LESSER', 'GREATER', 'NOT', 'NOT_ASSIGN', 'LESS_EQUALS', 'MORE_EQUALS', 'QUICK_ASSIGN', 'LSQUARE', 'RSQUARE', 'LCURL','RCURL', 'COMMA', 'DOT', 'SEMICOLON', 'COLON'}
+	operators = {'PLUS', 'MINUS', 'STAR', 'DIVIDE', 'MOD', 'ASSIGN', 'AND', 'LOGICAL_AND', 'INCR', 'DECR', 'LPAREN', 'RPAREN', 'OR', 'XOR', 'LSHIFT', 'RSHIFT', 'PLUS_ASSIGN', 'MINUS_ASSIGN', 'STAR_ASSIGN', 'DIVIDE_ASSIGN', 'MOD_ASSIGN', 'AND_XOR', 'AND_ASSIGN', 'OR_ASSIGN', 'XOR_ASSIGN', 'LSHIFT_ASSIGN', 'RSHIFT_ASSIGN', 'AND_XOR_ASSIGN', 'LOGICAL_OR', 'EQUALS', 'LESSER', 'GREATER', 'NOT', 'NOT_ASSIGN', 'LESS_EQUALS', 'MORE_EQUALS', 'QUICK_ASSIGN', 'LSQUARE', 'RSQUARE', 'LCURL', 'RCURL',  'COMMA', 'DOT', 'SEMICOLON', 'COLON'}
 
 	reserved = {}
 	for r in keywords:
@@ -203,12 +203,15 @@ class MyLex(object):
 					self.col += len(str(tok.value))
 					# self.f.write("</p>\r\n<p>")
 					if(tok.type == 'STRING'):
-						self.f.write("\"%s\""%tok.value)
+						# self.f.write("\"%s\""%tok.value)
+						self.f.write("<label style='color:")
+						self.f.write("\"%s\""% self.dict[str(tok.type)])
+						self.f.write("'>%s</label> "%tok.value)
 					else:
-						self.f.write("%s"%tok.value)
-					# self.f.write("<label style='color:")
-					# self.f.write("%s"% self.dict[str(tok.type)])
-					# self.f.write("'>%s</label> "%tok.value)
+						# self.f.write("%s"%tok.value)
+						self.f.write("<label style='color:")
+						self.f.write("%s"% self.dict[str(tok.type)])
+						self.f.write("'>%s</label> "%tok.value)
 				else:
 					tmp = tok.lexpos - self.row
 					while (tmp>self.col):
@@ -216,12 +219,15 @@ class MyLex(object):
 						self.col+=1
 					self.col += len(str(tok.value))
 					if(tok.type == 'STRING'):
-						self.f.write("\"%s\""%tok.value)
+						# self.f.write("\"%s\""%tok.value)
+						self.f.write("<label style='color:")
+						self.f.write("\"%s\""% self.dict[str(tok.type)])
+						self.f.write("'>%s</label> "%tok.value)
 					else:
-						self.f.write("%s"%tok.value)
-					# self.f.write("<label style='color:")
-					# self.f.write("%s"% self.dict[str(tok.type)])
-					# self.f.write("'>%s</label> "%tok.value)
+						# self.f.write("%s"%tok.value)
+						self.f.write("<label style='color:")
+						self.f.write("%s"% self.dict[str(tok.type)])
+						self.f.write("'>%s</label> "%tok.value)
             # print(tok)
 
 	def __init__(self):
@@ -233,12 +239,17 @@ class MyLex(object):
 		self.col=0;
 		# self.dict['hello'] = 'world'
 		# self.dict['hi'] = 'hello'
-		configfile = sys.argv[1].split("=")[1]
-		with open(configfile) as f:
+		self.configfile = sys.argv[1].split("=")[1]
+		with open(self.configfile) as f:
 			for line in f:
 				a,b=line.split(',')
 				b=b.split('\n')
 				self.dict[a]=b[0]
+				# <lable style='background:green'>I am red</lable>
+				self.f.write("<lable style='background:")
+				self.f.write("%s"% str(b[0]))
+				self.f.write("'>%s</lable>"% str(a))
+
 			# s1=f.readlines()
 			# print(s1)
 		# print(self.dict['PACKAGE'],self.dict['IMPORT'])
@@ -276,56 +287,3 @@ try:
 	myLexer.test(data)     # Test it
 except IndexError:
 	print("Usages:python lexer.py --cfg=tests/cfg1/some-cfg tests/input1/some-input --output=some.html")
-
-
-
-
-
-
-####################################### extra things##############33
-
-
-
-    # List of token names.
-    # tokens = (
-    #     'Keyword',
-    #     'Identifier',
-    #     'Literals',
-    #     'Separator',
-    #     'Comments',
-    #     'Operator' ,
-    #     'Alphabets',
-    #     'Numeric',
-    #     'Alphanum',
-    #     'Special',
-    #     'Graphic',
-    #     'IndentifierStart',
-    #     'FloatingLiteral',
-    #     'IntegerLiteral',
-    #     'BooleanLiteral',
-    #     'CharacterLiteral',
-    #     'StringLiteral',
-    #     'Illegals'
-
-    # )
-
-    # # Reg exp rules
-    # Keyword = r'(continue|for|new|switch|assert|default|goto|boolean|do|if|private|this|break|double|protected|byte|else|import|public|case|enum|return|catch|extends|int|short|try|char|static|void|class|long|volatile|const|float|while)'+r'[^0-9a-zA-Z$_]'
-    # Identifier = r'[a-zA-Z$_][a-zA-Z0-9$_]*'
-    # Separator = r'[;,.(){}[\] \"\']'
-    # Comments = r'(/\*([^*]|[\r\n]|(\*+([^*/]|[\r\n])))*\*+/)|(//.*)'
-    # Operator = r'(:=|=|<|>|<=|>=|\+|-|\*|/|==|\+\+|--|~|!|%|<<|>>|>>>|instanceof|!=|&|\^|\||&&|\|\||[+\-*/%&\^|]=|<<=|>>=|>>>=)'
-    # Alphabets = r'([a-zA-Z])'
-    # Numeric = r'([0-9])'
-    # Alphanum = r'([a-zA-Z0-9])'
-    # Special = r'([\]!%\^&$*()-+={}|~[\;:<>?,./#@`_])'
-    # Graphic = r'([a-zA-Z0-9]|'+ Special + r')'
-    # IdentifierStart = r'([0-9a-zA-Z$_])'
-
-    # FloatingLiteral=r'(([0-9]+)?\.([0-9]+)((e|E)((\+|-)?[0-9]+))?([fFdD])?|[0-9]+(e|E)(\+|-)?[0-9]+)'
-    # IntegerLiteral=r'[0-9]+'
-    # BooleanLiteral=r'(true|false|TRUE|FALSE)'
-    # CharacterLiteral=r'(\'(' + Graphic + r'|\ |\\[n\\ta"\'])\')'
-    # StringLiteral=r'(\"(' + Graphic + r'|\ |\\[n\\ta"\'])*\")'
-    # Illegals = r'('+IntegerLiteral + r'[a-zA-Z]+)'
-    # Literals= r'('+FloatingLiteral+r'|null|'+IntegerLiteral+r'|'+BooleanLiteral+r'|'+CharacterLiteral+r'|'+StringLiteral+r')'
