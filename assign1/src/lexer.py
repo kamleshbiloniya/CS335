@@ -28,7 +28,6 @@ class MyLex(object):
 
 	t_COMMENT = r'(/\*([^*]|\n|(\*+([^*/]|\n])))*\*+/)|(//.*)'
 	t_ignore = ' \t'
-	# t_ignore = ' '
 	# t_WSPACE = r'\s'
 	t_PLUS = r'\+'
 	t_MINUS = r'-'
@@ -81,7 +80,7 @@ class MyLex(object):
 	# wspace = "\s"
 
 	decimal_lit = "(0|([1-9][0-9]*))"
-	octal_lit = "(0[0-7]*)"	
+	octal_lit = "(0[0-7]*)"
 	hex_lit = "(0x|0X)[0-9a-fA-F]+"
 
 	# Float based reg variables
@@ -206,18 +205,13 @@ class MyLex(object):
 					if(tok.type == 'STRING'):
 						# self.f.write("\"%s\""%tok.value)
 						self.f.write("<label style='color:")
-						self.f.write("%s"% self.dict[str(tok.type)])
+						self.f.write("%s% self.dict[str(tok.type)])
 						self.f.write("'>\"%s\"</label> "%tok.value)
-					elif(tok.type == 'HEX'):
-						# self.f.write("\"%s\""%tok.value)
-						self.f.write("<label style='color:")
-						self.f.write("%s"% self.dict[str(tok.type)])
-						self.f.write("'>\"0x%x\"</label> "%tok.value)
 					else:
 						# self.f.write("%s"%tok.value)
 						self.f.write("<label style='color:")
 						self.f.write("%s"% self.dict[str(tok.type)])
-						self.f.write("'>%s</label> "%tok.value)
+						self.f.write("'>\"%s\"</label> "%tok.value)
 				else:
 					tmp = tok.lexpos - self.row
 					while (tmp>self.col):
@@ -229,16 +223,11 @@ class MyLex(object):
 						self.f.write("<label style='color:")
 						self.f.write("%s"% self.dict[str(tok.type)])
 						self.f.write("'>\"%s\"</label> "%tok.value)
-					elif(tok.type == 'HEX'):
-						# self.f.write("\"%s\""%tok.value)
-						self.f.write("<label style='color:")
-						self.f.write("%s"% self.dict[str(tok.type)])
-						self.f.write("'>\"0x%x\"</label> "%tok.value)
 					else:
 						# self.f.write("%s"%tok.value)
 						self.f.write("<label style='color:")
 						self.f.write("%s"% self.dict[str(tok.type)])
-						self.f.write("'>%s</label> "%tok.value)
+						self.f.write("'>\"%s\"</label> "%tok.value)
             # print(tok)
 
 	def __init__(self):
@@ -259,7 +248,7 @@ class MyLex(object):
 				# <lable style='background:green'>I am red</lable>
 				self.f.write("<lable style='background:")
 				self.f.write("%s"% str(b[0]))
-				self.f.write("'>%s</lable> &nbsp"% str(a))
+				self.f.write("'>%s</lable>"% str(a))
 
 			# s1=f.readlines()
 			# print(s1)

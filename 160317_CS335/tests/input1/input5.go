@@ -11,7 +11,7 @@ func main() {
     fmt.Println(person{name: "divya", age:19})
     fmt.Println(person{name: "harshit"})
     fmt.Println(&person{name: "biloniya", age: 21})
-    p := person{name: "sharma ji", age: 50}
+    p := person{name: "abc", age: 50}
     fmt.Println(p.name)
     /* G00d programmer don't do comment */
     psn := &p
