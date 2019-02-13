@@ -260,7 +260,7 @@ Rule 254   PackageClause -> PACKAGE PackageName
 Rule 255   PackageName -> IDENTIFIER
 Rule 256   ImportDecl -> IMPORT ImportSpec
 Rule 257   ImportDecl -> IMPORT LPAREN ImportSpecRep RPAREN
-Rule 258   ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON
+Rule 258   ImportSpecRep -> ImportSpecRep ImportSpec
 Rule 259   ImportSpecRep -> epsilon
 Rule 260   ImportSpec -> PackageNameDotOpt ImportPath
 Rule 261   PackageNameDotOpt -> DOT
@@ -335,7 +335,7 @@ RSHIFT_ASSIGN        : 200
 RSQUARE              : 20 130 131 132
 RUNE                 : 100
 RUNE_T               : 11
-SEMICOLON            : 24 49 58 71 79 203 234 234 249 251 252 258
+SEMICOLON            : 24 49 58 71 79 203 234 234 249 251 252
 STAR                 : 30 165
 STAR_ASSIGN          : 193
 STRING               : 29 101 264
@@ -781,7 +781,7 @@ state 25
 state 26
 
     (257) ImportDecl -> IMPORT LPAREN . ImportSpecRep RPAREN
-    (258) ImportSpecRep -> . ImportSpecRep ImportSpec SEMICOLON
+    (258) ImportSpecRep -> . ImportSpecRep ImportSpec
     (259) ImportSpecRep -> . epsilon
     (265) epsilon -> .
 
@@ -1114,7 +1114,7 @@ state 45
 state 46
 
     (257) ImportDecl -> IMPORT LPAREN ImportSpecRep . RPAREN
-    (258) ImportSpecRep -> ImportSpecRep . ImportSpec SEMICOLON
+    (258) ImportSpecRep -> ImportSpecRep . ImportSpec
     (260) ImportSpec -> . PackageNameDotOpt ImportPath
     (261) PackageNameDotOpt -> . DOT
     (262) PackageNameDotOpt -> . PackageName
@@ -1147,6 +1147,10 @@ state 48
     (260) ImportSpec -> PackageNameDotOpt ImportPath .
 
     SEMICOLON       reduce using rule 260 (ImportSpec -> PackageNameDotOpt ImportPath .)
+    RPAREN          reduce using rule 260 (ImportSpec -> PackageNameDotOpt ImportPath .)
+    DOT             reduce using rule 260 (ImportSpec -> PackageNameDotOpt ImportPath .)
+    IDENTIFIER      reduce using rule 260 (ImportSpec -> PackageNameDotOpt ImportPath .)
+    STRING          reduce using rule 260 (ImportSpec -> PackageNameDotOpt ImportPath .)
 
 
 state 49
@@ -1154,6 +1158,10 @@ state 49
     (264) ImportPath -> STRING .
 
     SEMICOLON       reduce using rule 264 (ImportPath -> STRING .)
+    RPAREN          reduce using rule 264 (ImportPath -> STRING .)
+    DOT             reduce using rule 264 (ImportPath -> STRING .)
+    IDENTIFIER      reduce using rule 264 (ImportPath -> STRING .)
+    STRING          reduce using rule 264 (ImportPath -> STRING .)
 
 
 state 50
@@ -1953,9 +1961,12 @@ state 90
 
 state 91
 
-    (258) ImportSpecRep -> ImportSpecRep ImportSpec . SEMICOLON
+    (258) ImportSpecRep -> ImportSpecRep ImportSpec .
 
-    SEMICOLON       shift and go to state 154
+    RPAREN          reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec .)
+    DOT             reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec .)
+    IDENTIFIER      reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec .)
+    STRING          reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec .)
 
 
 state 92
@@ -2009,9 +2020,9 @@ state 94
     SEMICOLON       reduce using rule 265 (epsilon -> .)
     RCURL           reduce using rule 265 (epsilon -> .)
 
-    StatementList                  shift and go to state 155
-    StatementRep                   shift and go to state 156
-    epsilon                        shift and go to state 157
+    StatementList                  shift and go to state 154
+    StatementRep                   shift and go to state 155
+    epsilon                        shift and go to state 156
 
 state 95
 
@@ -2105,7 +2116,7 @@ state 100
     STAR            shift and go to state 79
 
     ParameterListOpt               shift and go to state 101
-    Type                           shift and go to state 158
+    Type                           shift and go to state 157
     ParametersList                 shift and go to state 102
     epsilon                        shift and go to state 103
     TypeName                       shift and go to state 60
@@ -2123,7 +2134,7 @@ state 101
 
     (37) Parameters -> LPAREN ParameterListOpt . RPAREN
 
-    RPAREN          shift and go to state 159
+    RPAREN          shift and go to state 158
 
 
 state 102
@@ -2188,7 +2199,7 @@ state 105
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 160
+    Type                           shift and go to state 159
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -2203,7 +2214,7 @@ state 106
     (43) ParameterDeclCommaRep -> ParameterDeclCommaRep . COMMA ParameterDecl
 
     RPAREN          reduce using rule 42 (ParametersList -> ParameterDeclCommaRep .)
-    COMMA           shift and go to state 161
+    COMMA           shift and go to state 160
 
 
 state 107
@@ -2237,7 +2248,7 @@ state 108
 
     (44) ParameterDeclCommaRep -> ParameterDecl . COMMA ParameterDecl
 
-    COMMA           shift and go to state 162
+    COMMA           shift and go to state 161
 
 
 state 109
@@ -2251,7 +2262,7 @@ state 110
 
     (58) ConstSpecRep -> ConstSpecRep ConstSpec . SEMICOLON
 
-    SEMICOLON       shift and go to state 163
+    SEMICOLON       shift and go to state 162
 
 
 state 111
@@ -2304,7 +2315,7 @@ state 111
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionList                 shift and go to state 164
+    ExpressionList                 shift and go to state 163
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -2319,7 +2330,7 @@ state 112
 
     (4) Type -> LPAREN Type . RPAREN
 
-    RPAREN          shift and go to state 165
+    RPAREN          shift and go to state 164
 
 
 state 113
@@ -2361,7 +2372,7 @@ state 114
     TYPE            shift and go to state 75
     IDENTIFIER      shift and go to state 76
 
-    TypeName                       shift and go to state 166
+    TypeName                       shift and go to state 165
     TypeToken                      shift and go to state 63
     QualifiedIdent                 shift and go to state 64
 
@@ -2369,7 +2380,7 @@ state 115
 
     (20) ArrayType -> LSQUARE ArrayLength . RSQUARE ElementType
 
-    RSQUARE         shift and go to state 167
+    RSQUARE         shift and go to state 166
 
 
 state 116
@@ -2399,29 +2410,29 @@ state 116
     (166) UnaryOp -> . AND
 
     RSQUARE         reduce using rule 21 (ArrayLength -> Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
 state 117
 
@@ -2518,15 +2529,15 @@ state 118
     ASSIGN          reduce using rule 143 (UnaryExpr -> PrimaryExpr .)
     COLON           reduce using rule 143 (UnaryExpr -> PrimaryExpr .)
     LCURL           reduce using rule 143 (UnaryExpr -> PrimaryExpr .)
-    DOT             shift and go to state 191
-    LSQUARE         shift and go to state 192
-    LPAREN          shift and go to state 193
+    DOT             shift and go to state 190
+    LSQUARE         shift and go to state 191
+    LPAREN          shift and go to state 192
 
-    Selector                       shift and go to state 186
-    Index                          shift and go to state 187
-    Slice                          shift and go to state 188
-    TypeAssertion                  shift and go to state 189
-    Arguments                      shift and go to state 190
+    Selector                       shift and go to state 185
+    Index                          shift and go to state 186
+    Slice                          shift and go to state 187
+    TypeAssertion                  shift and go to state 188
+    Arguments                      shift and go to state 189
 
 state 119
 
@@ -2576,7 +2587,7 @@ state 119
     STRING          shift and go to state 139
 
     UnaryOp                        shift and go to state 119
-    UnaryExpr                      shift and go to state 194
+    UnaryExpr                      shift and go to state 193
     PrimaryExpr                    shift and go to state 118
     Operand                        shift and go to state 121
     Conversion                     shift and go to state 122
@@ -2631,7 +2642,7 @@ state 120
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    UnaryExpr                      shift and go to state 195
+    UnaryExpr                      shift and go to state 194
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
     Operand                        shift and go to state 121
@@ -2957,7 +2968,7 @@ state 129
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 196
+    Expression                     shift and go to state 195
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -3005,7 +3016,7 @@ state 130
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 197
+    Type                           shift and go to state 196
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -3438,8 +3449,8 @@ state 140
     RCURL           reduce using rule 265 (epsilon -> .)
     IDENTIFIER      reduce using rule 265 (epsilon -> .)
 
-    FieldDeclRep                   shift and go to state 198
-    epsilon                        shift and go to state 199
+    FieldDeclRep                   shift and go to state 197
+    epsilon                        shift and go to state 198
 
 state 141
 
@@ -3473,7 +3484,7 @@ state 143
 
     (64) IdentifierRep -> IdentifierRep COMMA . IDENTIFIER
 
-    IDENTIFIER      shift and go to state 200
+    IDENTIFIER      shift and go to state 199
 
 
 state 144
@@ -3487,7 +3498,7 @@ state 145
 
     (71) TypeSpecRep -> TypeSpecRep TypeSpec . SEMICOLON
 
-    SEMICOLON       shift and go to state 201
+    SEMICOLON       shift and go to state 200
 
 
 state 146
@@ -3508,7 +3519,7 @@ state 148
 
     (79) VarSpecRep -> VarSpecRep VarSpec . SEMICOLON
 
-    SEMICOLON       shift and go to state 202
+    SEMICOLON       shift and go to state 201
 
 
 state 149
@@ -3568,7 +3579,7 @@ state 150
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionList                 shift and go to state 203
+    ExpressionList                 shift and go to state 202
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -3622,55 +3633,45 @@ state 153
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
     COMMA           reduce using rule 265 (epsilon -> .)
     SEMICOLON       reduce using rule 265 (epsilon -> .)
     RPAREN          reduce using rule 265 (epsilon -> .)
     LCURL           reduce using rule 265 (epsilon -> .)
     COLON           reduce using rule 265 (epsilon -> .)
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    ExpressionRep                  shift and go to state 204
-    BinaryOp                       shift and go to state 168
-    epsilon                        shift and go to state 205
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    ExpressionRep                  shift and go to state 203
+    BinaryOp                       shift and go to state 167
+    epsilon                        shift and go to state 204
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
 state 154
 
-    (258) ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON .
+    (47) Block -> LCURL StatementList . RCURL
 
-    RPAREN          reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON .)
-    DOT             reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON .)
-    IDENTIFIER      reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON .)
-    STRING          reduce using rule 258 (ImportSpecRep -> ImportSpecRep ImportSpec SEMICOLON .)
+    RCURL           shift and go to state 205
 
 
 state 155
-
-    (47) Block -> LCURL StatementList . RCURL
-
-    RCURL           shift and go to state 206
-
-
-state 156
 
     (48) StatementList -> StatementRep .
     (49) StatementRep -> StatementRep . Statement SEMICOLON
@@ -3752,19 +3753,19 @@ state 156
     RCURL           reduce using rule 48 (StatementList -> StatementRep .)
     CASE            reduce using rule 48 (StatementList -> StatementRep .)
     DEFAULT         reduce using rule 48 (StatementList -> StatementRep .)
-    RETURN          shift and go to state 225
-    BREAK           shift and go to state 226
-    CONTINUE        shift and go to state 227
-    GOTO            shift and go to state 228
+    RETURN          shift and go to state 224
+    BREAK           shift and go to state 225
+    CONTINUE        shift and go to state 226
+    GOTO            shift and go to state 227
     LCURL           shift and go to state 94
-    IF              shift and go to state 229
-    FOR             shift and go to state 233
+    IF              shift and go to state 228
+    FOR             shift and go to state 232
     CONST           shift and go to state 21
     TYPE            shift and go to state 22
     VAR             shift and go to state 23
-    IDENTIFIER      shift and go to state 234
+    IDENTIFIER      shift and go to state 233
     SEMICOLON       reduce using rule 265 (epsilon -> .)
-    SWITCH          shift and go to state 236
+    SWITCH          shift and go to state 235
     NOT             shift and go to state 120
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
@@ -3780,31 +3781,31 @@ state 156
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Statement                      shift and go to state 207
-    Declaration                    shift and go to state 208
-    LabeledStmt                    shift and go to state 209
-    SimpleStmt                     shift and go to state 210
-    ReturnStmt                     shift and go to state 211
-    BreakStmt                      shift and go to state 212
-    ContinueStmt                   shift and go to state 213
-    GotoStmt                       shift and go to state 214
-    Block                          shift and go to state 215
-    IfStmt                         shift and go to state 216
-    SwitchStmt                     shift and go to state 217
-    ForStmt                        shift and go to state 218
+    Statement                      shift and go to state 206
+    Declaration                    shift and go to state 207
+    LabeledStmt                    shift and go to state 208
+    SimpleStmt                     shift and go to state 209
+    ReturnStmt                     shift and go to state 210
+    BreakStmt                      shift and go to state 211
+    ContinueStmt                   shift and go to state 212
+    GotoStmt                       shift and go to state 213
+    Block                          shift and go to state 214
+    IfStmt                         shift and go to state 215
+    SwitchStmt                     shift and go to state 216
+    ForStmt                        shift and go to state 217
     ConstDecl                      shift and go to state 17
     TypeDecl                       shift and go to state 18
     VarDecl                        shift and go to state 19
-    Label                          shift and go to state 219
-    epsilon                        shift and go to state 220
-    ExpressionStmt                 shift and go to state 221
-    IncDecStmt                     shift and go to state 222
-    Assignment                     shift and go to state 223
-    ShortVarDecl                   shift and go to state 224
-    Expression                     shift and go to state 230
-    ExprSwitchStmt                 shift and go to state 231
-    TypeSwitchStmt                 shift and go to state 232
-    ExpressionList                 shift and go to state 235
+    Label                          shift and go to state 218
+    epsilon                        shift and go to state 219
+    ExpressionStmt                 shift and go to state 220
+    IncDecStmt                     shift and go to state 221
+    Assignment                     shift and go to state 222
+    ShortVarDecl                   shift and go to state 223
+    Expression                     shift and go to state 229
+    ExprSwitchStmt                 shift and go to state 230
+    TypeSwitchStmt                 shift and go to state 231
+    ExpressionList                 shift and go to state 234
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -3814,7 +3815,7 @@ state 156
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 157
+state 156
 
     (50) StatementRep -> epsilon .
 
@@ -3850,20 +3851,20 @@ state 157
     DEFAULT         reduce using rule 50 (StatementRep -> epsilon .)
 
 
-state 158
+state 157
 
     (4) Type -> LPAREN Type . RPAREN
     (40) ParametersList -> Type .
     (46) ParameterDecl -> Type .
 
   ! shift/reduce conflict for RPAREN resolved as shift
-    RPAREN          shift and go to state 165
+    RPAREN          shift and go to state 164
     COMMA           reduce using rule 46 (ParameterDecl -> Type .)
 
   ! RPAREN          [ reduce using rule 40 (ParametersList -> Type .) ]
 
 
-state 159
+state 158
 
     (37) Parameters -> LPAREN ParameterListOpt RPAREN .
 
@@ -3884,7 +3885,7 @@ state 159
     SEMICOLON       reduce using rule 37 (Parameters -> LPAREN ParameterListOpt RPAREN .)
 
 
-state 160
+state 159
 
     (41) ParametersList -> IdentifierList Type .
     (45) ParameterDecl -> IdentifierList Type .
@@ -3893,7 +3894,7 @@ state 160
     COMMA           reduce using rule 45 (ParameterDecl -> IdentifierList Type .)
 
 
-state 161
+state 160
 
     (43) ParameterDeclCommaRep -> ParameterDeclCommaRep COMMA . ParameterDecl
     (45) ParameterDecl -> . IdentifierList Type
@@ -3934,9 +3935,9 @@ state 161
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    ParameterDecl                  shift and go to state 237
-    IdentifierList                 shift and go to state 238
-    Type                           shift and go to state 239
+    ParameterDecl                  shift and go to state 236
+    IdentifierList                 shift and go to state 237
+    Type                           shift and go to state 238
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -3945,7 +3946,7 @@ state 161
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 162
+state 161
 
     (44) ParameterDeclCommaRep -> ParameterDecl COMMA . ParameterDecl
     (45) ParameterDecl -> . IdentifierList Type
@@ -3986,9 +3987,9 @@ state 162
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    ParameterDecl                  shift and go to state 240
-    IdentifierList                 shift and go to state 238
-    Type                           shift and go to state 239
+    ParameterDecl                  shift and go to state 239
+    IdentifierList                 shift and go to state 237
+    Type                           shift and go to state 238
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -3997,7 +3998,7 @@ state 162
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 163
+state 162
 
     (58) ConstSpecRep -> ConstSpecRep ConstSpec SEMICOLON .
 
@@ -4005,14 +4006,14 @@ state 163
     IDENTIFIER      reduce using rule 58 (ConstSpecRep -> ConstSpecRep ConstSpec SEMICOLON .)
 
 
-state 164
+state 163
 
     (61) TypeExprListOpt -> TypeOpt ASSIGN ExpressionList .
 
     SEMICOLON       reduce using rule 61 (TypeExprListOpt -> TypeOpt ASSIGN ExpressionList .)
 
 
-state 165
+state 164
 
     (4) Type -> LPAREN Type RPAREN .
 
@@ -4026,7 +4027,7 @@ state 165
     COLON           reduce using rule 4 (Type -> LPAREN Type RPAREN .)
 
 
-state 166
+state 165
 
     (103) QualifiedIdent -> IDENTIFIER DOT TypeName .
 
@@ -4040,7 +4041,7 @@ state 166
     COLON           reduce using rule 103 (QualifiedIdent -> IDENTIFIER DOT TypeName .)
 
 
-state 167
+state 166
 
     (20) ArrayType -> LSQUARE ArrayLength RSQUARE . ElementType
     (22) ElementType -> . Type
@@ -4079,8 +4080,8 @@ state 167
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    ElementType                    shift and go to state 241
-    Type                           shift and go to state 242
+    ElementType                    shift and go to state 240
+    Type                           shift and go to state 241
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -4089,7 +4090,7 @@ state 167
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 168
+state 167
 
     (140) Expression -> Expression BinaryOp . Expression
     (139) Expression -> . UnaryExpr
@@ -4138,7 +4139,7 @@ state 168
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 243
+    Expression                     shift and go to state 242
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -4148,7 +4149,7 @@ state 168
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 169
+state 168
 
     (146) BinaryOp -> LOGICAL_OR .
 
@@ -4169,7 +4170,7 @@ state 169
     STRING          reduce using rule 146 (BinaryOp -> LOGICAL_OR .)
 
 
-state 170
+state 169
 
     (147) BinaryOp -> LOGICAL_AND .
 
@@ -4190,7 +4191,7 @@ state 170
     STRING          reduce using rule 147 (BinaryOp -> LOGICAL_AND .)
 
 
-state 171
+state 170
 
     (148) BinaryOp -> RelOp .
 
@@ -4211,7 +4212,7 @@ state 171
     STRING          reduce using rule 148 (BinaryOp -> RelOp .)
 
 
-state 172
+state 171
 
     (149) BinaryOp -> AddMulOp .
 
@@ -4232,7 +4233,7 @@ state 172
     STRING          reduce using rule 149 (BinaryOp -> AddMulOp .)
 
 
-state 173
+state 172
 
     (150) RelOp -> EQUALS .
 
@@ -4253,7 +4254,7 @@ state 173
     STRING          reduce using rule 150 (RelOp -> EQUALS .)
 
 
-state 174
+state 173
 
     (151) RelOp -> NOT_ASSIGN .
 
@@ -4274,7 +4275,7 @@ state 174
     STRING          reduce using rule 151 (RelOp -> NOT_ASSIGN .)
 
 
-state 175
+state 174
 
     (152) RelOp -> LESSER .
 
@@ -4295,7 +4296,7 @@ state 175
     STRING          reduce using rule 152 (RelOp -> LESSER .)
 
 
-state 176
+state 175
 
     (153) RelOp -> GREATER .
 
@@ -4316,7 +4317,7 @@ state 176
     STRING          reduce using rule 153 (RelOp -> GREATER .)
 
 
-state 177
+state 176
 
     (154) RelOp -> LESS_EQUALS .
 
@@ -4337,7 +4338,7 @@ state 177
     STRING          reduce using rule 154 (RelOp -> LESS_EQUALS .)
 
 
-state 178
+state 177
 
     (155) RelOp -> MORE_EQUALS .
 
@@ -4358,7 +4359,7 @@ state 178
     STRING          reduce using rule 155 (RelOp -> MORE_EQUALS .)
 
 
-state 179
+state 178
 
     (156) AddMulOp -> UnaryOp .
 
@@ -4379,7 +4380,7 @@ state 179
     STRING          reduce using rule 156 (AddMulOp -> UnaryOp .)
 
 
-state 180
+state 179
 
     (157) AddMulOp -> OR .
 
@@ -4400,7 +4401,7 @@ state 180
     STRING          reduce using rule 157 (AddMulOp -> OR .)
 
 
-state 181
+state 180
 
     (158) AddMulOp -> XOR .
 
@@ -4421,7 +4422,7 @@ state 181
     STRING          reduce using rule 158 (AddMulOp -> XOR .)
 
 
-state 182
+state 181
 
     (159) AddMulOp -> DIVIDE .
 
@@ -4442,7 +4443,7 @@ state 182
     STRING          reduce using rule 159 (AddMulOp -> DIVIDE .)
 
 
-state 183
+state 182
 
     (160) AddMulOp -> MOD .
 
@@ -4463,7 +4464,7 @@ state 183
     STRING          reduce using rule 160 (AddMulOp -> MOD .)
 
 
-state 184
+state 183
 
     (161) AddMulOp -> LSHIFT .
 
@@ -4484,7 +4485,7 @@ state 184
     STRING          reduce using rule 161 (AddMulOp -> LSHIFT .)
 
 
-state 185
+state 184
 
     (162) AddMulOp -> RSHIFT .
 
@@ -4505,7 +4506,7 @@ state 185
     STRING          reduce using rule 162 (AddMulOp -> RSHIFT .)
 
 
-state 186
+state 185
 
     (123) PrimaryExpr -> PrimaryExpr Selector .
 
@@ -4551,7 +4552,7 @@ state 186
     LCURL           reduce using rule 123 (PrimaryExpr -> PrimaryExpr Selector .)
 
 
-state 187
+state 186
 
     (125) PrimaryExpr -> PrimaryExpr Index .
 
@@ -4597,7 +4598,7 @@ state 187
     LCURL           reduce using rule 125 (PrimaryExpr -> PrimaryExpr Index .)
 
 
-state 188
+state 187
 
     (126) PrimaryExpr -> PrimaryExpr Slice .
 
@@ -4643,7 +4644,7 @@ state 188
     LCURL           reduce using rule 126 (PrimaryExpr -> PrimaryExpr Slice .)
 
 
-state 189
+state 188
 
     (127) PrimaryExpr -> PrimaryExpr TypeAssertion .
 
@@ -4689,7 +4690,7 @@ state 189
     LCURL           reduce using rule 127 (PrimaryExpr -> PrimaryExpr TypeAssertion .)
 
 
-state 190
+state 189
 
     (128) PrimaryExpr -> PrimaryExpr Arguments .
 
@@ -4735,16 +4736,16 @@ state 190
     LCURL           reduce using rule 128 (PrimaryExpr -> PrimaryExpr Arguments .)
 
 
-state 191
+state 190
 
     (129) Selector -> DOT . IDENTIFIER
     (133) TypeAssertion -> DOT . LPAREN Type RPAREN
 
-    IDENTIFIER      shift and go to state 244
-    LPAREN          shift and go to state 245
+    IDENTIFIER      shift and go to state 243
+    LPAREN          shift and go to state 244
 
 
-state 192
+state 191
 
     (130) Index -> LSQUARE . Expression RSQUARE
     (131) Slice -> LSQUARE . ExpressionOpt COLON ExpressionOpt RSQUARE
@@ -4799,10 +4800,10 @@ state 192
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 246
-    ExpressionOpt                  shift and go to state 247
+    Expression                     shift and go to state 245
+    ExpressionOpt                  shift and go to state 246
     UnaryExpr                      shift and go to state 117
-    epsilon                        shift and go to state 248
+    epsilon                        shift and go to state 247
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
     Operand                        shift and go to state 121
@@ -4811,7 +4812,7 @@ state 192
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 193
+state 192
 
     (134) Arguments -> LPAREN . ExpressionListTypeOpt RPAREN
     (135) ExpressionListTypeOpt -> . ExpressionList
@@ -4865,9 +4866,9 @@ state 193
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionListTypeOpt          shift and go to state 249
-    ExpressionList                 shift and go to state 250
-    epsilon                        shift and go to state 251
+    ExpressionListTypeOpt          shift and go to state 248
+    ExpressionList                 shift and go to state 249
+    epsilon                        shift and go to state 250
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -4878,7 +4879,7 @@ state 193
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 194
+state 193
 
     (144) UnaryExpr -> UnaryOp UnaryExpr .
 
@@ -4921,7 +4922,7 @@ state 194
     LCURL           reduce using rule 144 (UnaryExpr -> UnaryOp UnaryExpr .)
 
 
-state 195
+state 194
 
     (145) UnaryExpr -> NOT UnaryExpr .
 
@@ -4964,7 +4965,7 @@ state 195
     LCURL           reduce using rule 145 (UnaryExpr -> NOT UnaryExpr .)
 
 
-state 196
+state 195
 
     (93) Operand -> LPAREN Expression . RPAREN
     (140) Expression -> Expression . BinaryOp Expression
@@ -4990,52 +4991,52 @@ state 196
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    RPAREN          shift and go to state 252
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    RPAREN          shift and go to state 251
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 197
+state 196
 
     (167) Conversion -> TYPECAST Type . LPAREN Expression RPAREN
 
-    LPAREN          shift and go to state 253
+    LPAREN          shift and go to state 252
 
 
-state 198
+state 197
 
     (23) StructType -> STRUCT LCURL FieldDeclRep . RCURL
     (24) FieldDeclRep -> FieldDeclRep . FieldDecl SEMICOLON
     (26) FieldDecl -> . IdentifierList Type TagOpt
     (63) IdentifierList -> . IDENTIFIER IdentifierRep
 
-    RCURL           shift and go to state 254
+    RCURL           shift and go to state 253
     IDENTIFIER      shift and go to state 37
 
-    FieldDecl                      shift and go to state 255
-    IdentifierList                 shift and go to state 256
+    FieldDecl                      shift and go to state 254
+    IdentifierList                 shift and go to state 255
 
-state 199
+state 198
 
     (25) FieldDeclRep -> epsilon .
 
@@ -5043,7 +5044,7 @@ state 199
     IDENTIFIER      reduce using rule 25 (FieldDeclRep -> epsilon .)
 
 
-state 200
+state 199
 
     (64) IdentifierRep -> IdentifierRep COMMA IDENTIFIER .
 
@@ -5065,7 +5066,7 @@ state 200
     SEMICOLON       reduce using rule 64 (IdentifierRep -> IdentifierRep COMMA IDENTIFIER .)
 
 
-state 201
+state 200
 
     (71) TypeSpecRep -> TypeSpecRep TypeSpec SEMICOLON .
 
@@ -5073,7 +5074,7 @@ state 201
     IDENTIFIER      reduce using rule 71 (TypeSpecRep -> TypeSpecRep TypeSpec SEMICOLON .)
 
 
-state 202
+state 201
 
     (79) VarSpecRep -> VarSpecRep VarSpec SEMICOLON .
 
@@ -5081,14 +5082,14 @@ state 202
     IDENTIFIER      reduce using rule 79 (VarSpecRep -> VarSpecRep VarSpec SEMICOLON .)
 
 
-state 203
+state 202
 
     (83) ExpressionListOpt -> ASSIGN ExpressionList .
 
     SEMICOLON       reduce using rule 83 (ExpressionListOpt -> ASSIGN ExpressionList .)
 
 
-state 204
+state 203
 
     (66) ExpressionList -> Expression ExpressionRep .
     (67) ExpressionRep -> ExpressionRep . COMMA Expression
@@ -5108,10 +5109,10 @@ state 204
     RPAREN          reduce using rule 66 (ExpressionList -> Expression ExpressionRep .)
     LCURL           reduce using rule 66 (ExpressionList -> Expression ExpressionRep .)
     COLON           reduce using rule 66 (ExpressionList -> Expression ExpressionRep .)
-    COMMA           shift and go to state 257
+    COMMA           shift and go to state 256
 
 
-state 205
+state 204
 
     (68) ExpressionRep -> epsilon .
 
@@ -5133,7 +5134,7 @@ state 205
     ASSIGN          reduce using rule 68 (ExpressionRep -> epsilon .)
 
 
-state 206
+state 205
 
     (47) Block -> LCURL StatementList RCURL .
 
@@ -5141,98 +5142,98 @@ state 206
     ELSE            reduce using rule 47 (Block -> LCURL StatementList RCURL .)
 
 
-state 207
+state 206
 
     (49) StatementRep -> StatementRep Statement . SEMICOLON
 
-    SEMICOLON       shift and go to state 258
+    SEMICOLON       shift and go to state 257
 
 
-state 208
+state 207
 
     (168) Statement -> Declaration .
 
     SEMICOLON       reduce using rule 168 (Statement -> Declaration .)
 
 
-state 209
+state 208
 
     (169) Statement -> LabeledStmt .
 
     SEMICOLON       reduce using rule 169 (Statement -> LabeledStmt .)
 
 
-state 210
+state 209
 
     (170) Statement -> SimpleStmt .
 
     SEMICOLON       reduce using rule 170 (Statement -> SimpleStmt .)
 
 
-state 211
+state 210
 
     (171) Statement -> ReturnStmt .
 
     SEMICOLON       reduce using rule 171 (Statement -> ReturnStmt .)
 
 
-state 212
+state 211
 
     (172) Statement -> BreakStmt .
 
     SEMICOLON       reduce using rule 172 (Statement -> BreakStmt .)
 
 
-state 213
+state 212
 
     (173) Statement -> ContinueStmt .
 
     SEMICOLON       reduce using rule 173 (Statement -> ContinueStmt .)
 
 
-state 214
+state 213
 
     (174) Statement -> GotoStmt .
 
     SEMICOLON       reduce using rule 174 (Statement -> GotoStmt .)
 
 
-state 215
+state 214
 
     (175) Statement -> Block .
 
     SEMICOLON       reduce using rule 175 (Statement -> Block .)
 
 
-state 216
+state 215
 
     (176) Statement -> IfStmt .
 
     SEMICOLON       reduce using rule 176 (Statement -> IfStmt .)
 
 
-state 217
+state 216
 
     (177) Statement -> SwitchStmt .
 
     SEMICOLON       reduce using rule 177 (Statement -> SwitchStmt .)
 
 
-state 218
+state 217
 
     (178) Statement -> ForStmt .
 
     SEMICOLON       reduce using rule 178 (Statement -> ForStmt .)
 
 
-state 219
+state 218
 
     (184) LabeledStmt -> Label . COLON Statement
 
-    COLON           shift and go to state 259
+    COLON           shift and go to state 258
 
 
-state 220
+state 219
 
     (179) SimpleStmt -> epsilon .
 
@@ -5240,7 +5241,7 @@ state 220
     LCURL           reduce using rule 179 (SimpleStmt -> epsilon .)
 
 
-state 221
+state 220
 
     (180) SimpleStmt -> ExpressionStmt .
 
@@ -5248,7 +5249,7 @@ state 221
     LCURL           reduce using rule 180 (SimpleStmt -> ExpressionStmt .)
 
 
-state 222
+state 221
 
     (181) SimpleStmt -> IncDecStmt .
 
@@ -5256,7 +5257,7 @@ state 222
     LCURL           reduce using rule 181 (SimpleStmt -> IncDecStmt .)
 
 
-state 223
+state 222
 
     (182) SimpleStmt -> Assignment .
 
@@ -5264,7 +5265,7 @@ state 223
     LCURL           reduce using rule 182 (SimpleStmt -> Assignment .)
 
 
-state 224
+state 223
 
     (183) SimpleStmt -> ShortVarDecl .
 
@@ -5272,7 +5273,7 @@ state 224
     LCURL           reduce using rule 183 (SimpleStmt -> ShortVarDecl .)
 
 
-state 225
+state 224
 
     (241) ReturnStmt -> RETURN . ExpressionListPureOpt
     (242) ExpressionListPureOpt -> . ExpressionList
@@ -5326,9 +5327,9 @@ state 225
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionListPureOpt          shift and go to state 260
-    ExpressionList                 shift and go to state 261
-    epsilon                        shift and go to state 262
+    ExpressionListPureOpt          shift and go to state 259
+    ExpressionList                 shift and go to state 260
+    epsilon                        shift and go to state 261
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -5339,7 +5340,7 @@ state 225
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 226
+state 225
 
     (244) BreakStmt -> BREAK . LabelOpt
     (246) LabelOpt -> . Label
@@ -5347,14 +5348,14 @@ state 226
     (185) Label -> . IDENTIFIER
     (265) epsilon -> .
 
-    IDENTIFIER      shift and go to state 266
+    IDENTIFIER      shift and go to state 265
     SEMICOLON       reduce using rule 265 (epsilon -> .)
 
-    LabelOpt                       shift and go to state 263
-    Label                          shift and go to state 264
-    epsilon                        shift and go to state 265
+    LabelOpt                       shift and go to state 262
+    Label                          shift and go to state 263
+    epsilon                        shift and go to state 264
 
-state 227
+state 226
 
     (245) ContinueStmt -> CONTINUE . LabelOpt
     (246) LabelOpt -> . Label
@@ -5362,23 +5363,23 @@ state 227
     (185) Label -> . IDENTIFIER
     (265) epsilon -> .
 
-    IDENTIFIER      shift and go to state 266
+    IDENTIFIER      shift and go to state 265
     SEMICOLON       reduce using rule 265 (epsilon -> .)
 
-    LabelOpt                       shift and go to state 267
-    Label                          shift and go to state 264
-    epsilon                        shift and go to state 265
+    LabelOpt                       shift and go to state 266
+    Label                          shift and go to state 263
+    epsilon                        shift and go to state 264
 
-state 228
+state 227
 
     (248) GotoStmt -> GOTO . Label
     (185) Label -> . IDENTIFIER
 
-    IDENTIFIER      shift and go to state 266
+    IDENTIFIER      shift and go to state 265
 
-    Label                          shift and go to state 268
+    Label                          shift and go to state 267
 
-state 229
+state 228
 
     (202) IfStmt -> IF . Expression Block ElseOpt
     (139) Expression -> . UnaryExpr
@@ -5427,7 +5428,7 @@ state 229
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 269
+    Expression                     shift and go to state 268
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -5437,7 +5438,7 @@ state 229
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 230
+state 229
 
     (186) ExpressionStmt -> Expression .
     (187) IncDecStmt -> Expression . INCR
@@ -5471,22 +5472,22 @@ state 230
 
     SEMICOLON       reduce using rule 186 (ExpressionStmt -> Expression .)
     LCURL           reduce using rule 186 (ExpressionStmt -> Expression .)
-    INCR            shift and go to state 270
-    DECR            shift and go to state 271
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    INCR            shift and go to state 269
+    DECR            shift and go to state 270
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     COMMA           reduce using rule 265 (epsilon -> .)
     PLUS_ASSIGN     reduce using rule 265 (epsilon -> .)
     MINUS_ASSIGN    reduce using rule 265 (epsilon -> .)
@@ -5504,28 +5505,28 @@ state 230
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    ExpressionRep                  shift and go to state 204
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    epsilon                        shift and go to state 205
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    ExpressionRep                  shift and go to state 203
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    epsilon                        shift and go to state 204
+    UnaryOp                        shift and go to state 178
 
-state 231
+state 230
 
     (208) SwitchStmt -> ExprSwitchStmt .
 
     SEMICOLON       reduce using rule 208 (SwitchStmt -> ExprSwitchStmt .)
 
 
-state 232
+state 231
 
     (209) SwitchStmt -> TypeSwitchStmt .
 
     SEMICOLON       reduce using rule 209 (SwitchStmt -> TypeSwitchStmt .)
 
 
-state 233
+state 232
 
     (228) ForStmt -> FOR . ConditionBlockOpt Block
     (229) ConditionBlockOpt -> . epsilon
@@ -5584,7 +5585,7 @@ state 233
     SEMICOLON       reduce using rule 265 (epsilon -> .)
     RANGE           reduce using rule 265 (epsilon -> .)
     NOT             shift and go to state 120
-    IDENTIFIER      shift and go to state 282
+    IDENTIFIER      shift and go to state 281
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
@@ -5599,37 +5600,37 @@ state 233
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ConditionBlockOpt              shift and go to state 272
-    epsilon                        shift and go to state 273
-    Condition                      shift and go to state 274
-    ForClause                      shift and go to state 275
-    RangeClause                    shift and go to state 276
-    Expression                     shift and go to state 277
-    SimpleStmt                     shift and go to state 278
-    ExpressionIdentListOpt         shift and go to state 279
+    ConditionBlockOpt              shift and go to state 271
+    epsilon                        shift and go to state 272
+    Condition                      shift and go to state 273
+    ForClause                      shift and go to state 274
+    RangeClause                    shift and go to state 275
+    Expression                     shift and go to state 276
+    SimpleStmt                     shift and go to state 277
+    ExpressionIdentListOpt         shift and go to state 278
     UnaryExpr                      shift and go to state 117
-    ExpressionStmt                 shift and go to state 221
-    IncDecStmt                     shift and go to state 222
-    Assignment                     shift and go to state 223
-    ShortVarDecl                   shift and go to state 224
-    ExpressionIdentifier           shift and go to state 280
+    ExpressionStmt                 shift and go to state 220
+    IncDecStmt                     shift and go to state 221
+    Assignment                     shift and go to state 222
+    ShortVarDecl                   shift and go to state 223
+    ExpressionIdentifier           shift and go to state 279
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
-    ExpressionList                 shift and go to state 281
+    ExpressionList                 shift and go to state 280
     Operand                        shift and go to state 121
     Conversion                     shift and go to state 122
     Literal                        shift and go to state 127
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 234
+state 233
 
     (185) Label -> IDENTIFIER .
     (85) ShortVarDecl -> IDENTIFIER . QUICK_ASSIGN Expression
     (102) OperandName -> IDENTIFIER .
 
     COLON           reduce using rule 185 (Label -> IDENTIFIER .)
-    QUICK_ASSIGN    shift and go to state 283
+    QUICK_ASSIGN    shift and go to state 282
     DOT             reduce using rule 102 (OperandName -> IDENTIFIER .)
     LSQUARE         reduce using rule 102 (OperandName -> IDENTIFIER .)
     LPAREN          reduce using rule 102 (OperandName -> IDENTIFIER .)
@@ -5668,7 +5669,7 @@ state 234
     ASSIGN          reduce using rule 102 (OperandName -> IDENTIFIER .)
 
 
-state 235
+state 234
 
     (189) Assignment -> ExpressionList . assign_op ExpressionList
     (190) assign_op -> . AssignOp
@@ -5684,22 +5685,22 @@ state 235
     (200) AssignOp -> . RSHIFT_ASSIGN
     (201) AssignOp -> . ASSIGN
 
-    PLUS_ASSIGN     shift and go to state 286
-    MINUS_ASSIGN    shift and go to state 287
-    STAR_ASSIGN     shift and go to state 288
-    DIVIDE_ASSIGN   shift and go to state 289
-    MOD_ASSIGN      shift and go to state 290
-    AND_ASSIGN      shift and go to state 291
-    OR_ASSIGN       shift and go to state 292
-    XOR_ASSIGN      shift and go to state 293
-    LSHIFT_ASSIGN   shift and go to state 294
-    RSHIFT_ASSIGN   shift and go to state 295
-    ASSIGN          shift and go to state 296
+    PLUS_ASSIGN     shift and go to state 285
+    MINUS_ASSIGN    shift and go to state 286
+    STAR_ASSIGN     shift and go to state 287
+    DIVIDE_ASSIGN   shift and go to state 288
+    MOD_ASSIGN      shift and go to state 289
+    AND_ASSIGN      shift and go to state 290
+    OR_ASSIGN       shift and go to state 291
+    XOR_ASSIGN      shift and go to state 292
+    LSHIFT_ASSIGN   shift and go to state 293
+    RSHIFT_ASSIGN   shift and go to state 294
+    ASSIGN          shift and go to state 295
 
-    assign_op                      shift and go to state 284
-    AssignOp                       shift and go to state 285
+    assign_op                      shift and go to state 283
+    AssignOp                       shift and go to state 284
 
-state 236
+state 235
 
     (210) ExprSwitchStmt -> SWITCH . ExpressionOpt LCURL ExprCaseClauseRep RCURL
     (216) TypeSwitchStmt -> SWITCH . SimpleStmtOpt TypeSwitchGuard LCURL TypeCaseClauseOpt RCURL
@@ -5762,7 +5763,7 @@ state 236
     LCURL           reduce using rule 265 (epsilon -> .)
     SEMICOLON       reduce using rule 265 (epsilon -> .)
     NOT             shift and go to state 120
-    IDENTIFIER      shift and go to state 282
+    IDENTIFIER      shift and go to state 281
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
@@ -5788,26 +5789,26 @@ state 236
   ! RUNE            [ reduce using rule 265 (epsilon -> .) ]
   ! STRING          [ reduce using rule 265 (epsilon -> .) ]
 
-    ExpressionOpt                  shift and go to state 297
-    SimpleStmtOpt                  shift and go to state 298
-    Expression                     shift and go to state 299
-    epsilon                        shift and go to state 300
-    SimpleStmt                     shift and go to state 301
+    ExpressionOpt                  shift and go to state 296
+    SimpleStmtOpt                  shift and go to state 297
+    Expression                     shift and go to state 298
+    epsilon                        shift and go to state 299
+    SimpleStmt                     shift and go to state 300
     UnaryExpr                      shift and go to state 117
-    ExpressionStmt                 shift and go to state 221
-    IncDecStmt                     shift and go to state 222
-    Assignment                     shift and go to state 223
-    ShortVarDecl                   shift and go to state 224
+    ExpressionStmt                 shift and go to state 220
+    IncDecStmt                     shift and go to state 221
+    Assignment                     shift and go to state 222
+    ShortVarDecl                   shift and go to state 223
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
-    ExpressionList                 shift and go to state 235
+    ExpressionList                 shift and go to state 234
     Operand                        shift and go to state 121
     Conversion                     shift and go to state 122
     Literal                        shift and go to state 127
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 237
+state 236
 
     (43) ParameterDeclCommaRep -> ParameterDeclCommaRep COMMA ParameterDecl .
 
@@ -5815,7 +5816,7 @@ state 237
     RPAREN          reduce using rule 43 (ParameterDeclCommaRep -> ParameterDeclCommaRep COMMA ParameterDecl .)
 
 
-state 238
+state 237
 
     (45) ParameterDecl -> IdentifierList . Type
     (2) Type -> . TypeName
@@ -5853,7 +5854,7 @@ state 238
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 302
+    Type                           shift and go to state 301
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -5862,7 +5863,7 @@ state 238
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 239
+state 238
 
     (46) ParameterDecl -> Type .
 
@@ -5870,7 +5871,7 @@ state 239
     RPAREN          reduce using rule 46 (ParameterDecl -> Type .)
 
 
-state 240
+state 239
 
     (44) ParameterDeclCommaRep -> ParameterDecl COMMA ParameterDecl .
 
@@ -5878,7 +5879,7 @@ state 240
     RPAREN          reduce using rule 44 (ParameterDeclCommaRep -> ParameterDecl COMMA ParameterDecl .)
 
 
-state 241
+state 240
 
     (20) ArrayType -> LSQUARE ArrayLength RSQUARE ElementType .
 
@@ -5892,7 +5893,7 @@ state 241
     COLON           reduce using rule 20 (ArrayType -> LSQUARE ArrayLength RSQUARE ElementType .)
 
 
-state 242
+state 241
 
     (22) ElementType -> Type .
 
@@ -5906,7 +5907,7 @@ state 242
     COLON           reduce using rule 22 (ElementType -> Type .)
 
 
-state 243
+state 242
 
     (140) Expression -> Expression BinaryOp Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -5969,20 +5970,20 @@ state 243
     ASSIGN          reduce using rule 140 (Expression -> Expression BinaryOp Expression .)
     COLON           reduce using rule 140 (Expression -> Expression BinaryOp Expression .)
     LCURL           reduce using rule 140 (Expression -> Expression BinaryOp Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
@@ -6007,12 +6008,12 @@ state 243
   ! STAR            [ reduce using rule 140 (Expression -> Expression BinaryOp Expression .) ]
   ! AND             [ reduce using rule 140 (Expression -> Expression BinaryOp Expression .) ]
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 244
+state 243
 
     (129) Selector -> DOT IDENTIFIER .
 
@@ -6058,7 +6059,7 @@ state 244
     LCURL           reduce using rule 129 (Selector -> DOT IDENTIFIER .)
 
 
-state 245
+state 244
 
     (133) TypeAssertion -> DOT LPAREN . Type RPAREN
     (2) Type -> . TypeName
@@ -6096,7 +6097,7 @@ state 245
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 303
+    Type                           shift and go to state 302
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -6105,7 +6106,7 @@ state 245
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 246
+state 245
 
     (130) Index -> LSQUARE Expression . RSQUARE
     (140) Expression -> Expression . BinaryOp Expression
@@ -6132,41 +6133,41 @@ state 246
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    RSQUARE         shift and go to state 304
+    RSQUARE         shift and go to state 303
     COLON           reduce using rule 141 (ExpressionOpt -> Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 247
+state 246
 
     (131) Slice -> LSQUARE ExpressionOpt . COLON ExpressionOpt RSQUARE
     (132) Slice -> LSQUARE ExpressionOpt . COLON Expression COLON Expression RSQUARE
 
-    COLON           shift and go to state 305
+    COLON           shift and go to state 304
 
 
-state 248
+state 247
 
     (142) ExpressionOpt -> epsilon .
 
@@ -6174,28 +6175,28 @@ state 248
     RSQUARE         reduce using rule 142 (ExpressionOpt -> epsilon .)
 
 
-state 249
+state 248
 
     (134) Arguments -> LPAREN ExpressionListTypeOpt . RPAREN
 
-    RPAREN          shift and go to state 306
+    RPAREN          shift and go to state 305
 
 
-state 250
+state 249
 
     (135) ExpressionListTypeOpt -> ExpressionList .
 
     RPAREN          reduce using rule 135 (ExpressionListTypeOpt -> ExpressionList .)
 
 
-state 251
+state 250
 
     (136) ExpressionListTypeOpt -> epsilon .
 
     RPAREN          reduce using rule 136 (ExpressionListTypeOpt -> epsilon .)
 
 
-state 252
+state 251
 
     (93) Operand -> LPAREN Expression RPAREN .
 
@@ -6241,7 +6242,7 @@ state 252
     LCURL           reduce using rule 93 (Operand -> LPAREN Expression RPAREN .)
 
 
-state 253
+state 252
 
     (167) Conversion -> TYPECAST Type LPAREN . Expression RPAREN
     (139) Expression -> . UnaryExpr
@@ -6290,7 +6291,7 @@ state 253
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 307
+    Expression                     shift and go to state 306
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -6300,7 +6301,7 @@ state 253
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 254
+state 253
 
     (23) StructType -> STRUCT LCURL FieldDeclRep RCURL .
 
@@ -6314,14 +6315,14 @@ state 254
     COLON           reduce using rule 23 (StructType -> STRUCT LCURL FieldDeclRep RCURL .)
 
 
-state 255
+state 254
 
     (24) FieldDeclRep -> FieldDeclRep FieldDecl . SEMICOLON
 
-    SEMICOLON       shift and go to state 308
+    SEMICOLON       shift and go to state 307
 
 
-state 256
+state 255
 
     (26) FieldDecl -> IdentifierList . Type TagOpt
     (2) Type -> . TypeName
@@ -6359,7 +6360,7 @@ state 256
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 309
+    Type                           shift and go to state 308
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -6368,7 +6369,7 @@ state 256
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 257
+state 256
 
     (67) ExpressionRep -> ExpressionRep COMMA . Expression
     (139) Expression -> . UnaryExpr
@@ -6417,7 +6418,7 @@ state 257
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 310
+    Expression                     shift and go to state 309
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -6427,7 +6428,7 @@ state 257
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 258
+state 257
 
     (49) StatementRep -> StatementRep Statement SEMICOLON .
 
@@ -6463,7 +6464,7 @@ state 258
     DEFAULT         reduce using rule 49 (StatementRep -> StatementRep Statement SEMICOLON .)
 
 
-state 259
+state 258
 
     (184) LabeledStmt -> Label COLON . Statement
     (168) Statement -> . Declaration
@@ -6541,19 +6542,19 @@ state 259
     (100) BasicLit -> . RUNE
     (101) BasicLit -> . STRING
 
-    RETURN          shift and go to state 225
-    BREAK           shift and go to state 226
-    CONTINUE        shift and go to state 227
-    GOTO            shift and go to state 228
+    RETURN          shift and go to state 224
+    BREAK           shift and go to state 225
+    CONTINUE        shift and go to state 226
+    GOTO            shift and go to state 227
     LCURL           shift and go to state 94
-    IF              shift and go to state 229
-    FOR             shift and go to state 233
+    IF              shift and go to state 228
+    FOR             shift and go to state 232
     CONST           shift and go to state 21
     TYPE            shift and go to state 22
     VAR             shift and go to state 23
-    IDENTIFIER      shift and go to state 234
+    IDENTIFIER      shift and go to state 233
     SEMICOLON       reduce using rule 265 (epsilon -> .)
-    SWITCH          shift and go to state 236
+    SWITCH          shift and go to state 235
     NOT             shift and go to state 120
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
@@ -6569,31 +6570,31 @@ state 259
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Label                          shift and go to state 219
-    Statement                      shift and go to state 311
-    Declaration                    shift and go to state 208
-    LabeledStmt                    shift and go to state 209
-    SimpleStmt                     shift and go to state 210
-    ReturnStmt                     shift and go to state 211
-    BreakStmt                      shift and go to state 212
-    ContinueStmt                   shift and go to state 213
-    GotoStmt                       shift and go to state 214
-    Block                          shift and go to state 215
-    IfStmt                         shift and go to state 216
-    SwitchStmt                     shift and go to state 217
-    ForStmt                        shift and go to state 218
+    Label                          shift and go to state 218
+    Statement                      shift and go to state 310
+    Declaration                    shift and go to state 207
+    LabeledStmt                    shift and go to state 208
+    SimpleStmt                     shift and go to state 209
+    ReturnStmt                     shift and go to state 210
+    BreakStmt                      shift and go to state 211
+    ContinueStmt                   shift and go to state 212
+    GotoStmt                       shift and go to state 213
+    Block                          shift and go to state 214
+    IfStmt                         shift and go to state 215
+    SwitchStmt                     shift and go to state 216
+    ForStmt                        shift and go to state 217
     ConstDecl                      shift and go to state 17
     TypeDecl                       shift and go to state 18
     VarDecl                        shift and go to state 19
-    epsilon                        shift and go to state 220
-    ExpressionStmt                 shift and go to state 221
-    IncDecStmt                     shift and go to state 222
-    Assignment                     shift and go to state 223
-    ShortVarDecl                   shift and go to state 224
-    Expression                     shift and go to state 230
-    ExprSwitchStmt                 shift and go to state 231
-    TypeSwitchStmt                 shift and go to state 232
-    ExpressionList                 shift and go to state 235
+    epsilon                        shift and go to state 219
+    ExpressionStmt                 shift and go to state 220
+    IncDecStmt                     shift and go to state 221
+    Assignment                     shift and go to state 222
+    ShortVarDecl                   shift and go to state 223
+    Expression                     shift and go to state 229
+    ExprSwitchStmt                 shift and go to state 230
+    TypeSwitchStmt                 shift and go to state 231
+    ExpressionList                 shift and go to state 234
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -6603,70 +6604,70 @@ state 259
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 260
+state 259
 
     (241) ReturnStmt -> RETURN ExpressionListPureOpt .
 
     SEMICOLON       reduce using rule 241 (ReturnStmt -> RETURN ExpressionListPureOpt .)
 
 
-state 261
+state 260
 
     (242) ExpressionListPureOpt -> ExpressionList .
 
     SEMICOLON       reduce using rule 242 (ExpressionListPureOpt -> ExpressionList .)
 
 
-state 262
+state 261
 
     (243) ExpressionListPureOpt -> epsilon .
 
     SEMICOLON       reduce using rule 243 (ExpressionListPureOpt -> epsilon .)
 
 
-state 263
+state 262
 
     (244) BreakStmt -> BREAK LabelOpt .
 
     SEMICOLON       reduce using rule 244 (BreakStmt -> BREAK LabelOpt .)
 
 
-state 264
+state 263
 
     (246) LabelOpt -> Label .
 
     SEMICOLON       reduce using rule 246 (LabelOpt -> Label .)
 
 
-state 265
+state 264
 
     (247) LabelOpt -> epsilon .
 
     SEMICOLON       reduce using rule 247 (LabelOpt -> epsilon .)
 
 
-state 266
+state 265
 
     (185) Label -> IDENTIFIER .
 
     SEMICOLON       reduce using rule 185 (Label -> IDENTIFIER .)
 
 
-state 267
+state 266
 
     (245) ContinueStmt -> CONTINUE LabelOpt .
 
     SEMICOLON       reduce using rule 245 (ContinueStmt -> CONTINUE LabelOpt .)
 
 
-state 268
+state 267
 
     (248) GotoStmt -> GOTO Label .
 
     SEMICOLON       reduce using rule 248 (GotoStmt -> GOTO Label .)
 
 
-state 269
+state 268
 
     (202) IfStmt -> IF Expression . Block ElseOpt
     (140) Expression -> Expression . BinaryOp Expression
@@ -6694,32 +6695,32 @@ state 269
     (166) UnaryOp -> . AND
 
     LCURL           shift and go to state 94
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    Block                          shift and go to state 312
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    Block                          shift and go to state 311
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 270
+state 269
 
     (187) IncDecStmt -> Expression INCR .
 
@@ -6727,7 +6728,7 @@ state 270
     LCURL           reduce using rule 187 (IncDecStmt -> Expression INCR .)
 
 
-state 271
+state 270
 
     (188) IncDecStmt -> Expression DECR .
 
@@ -6735,16 +6736,16 @@ state 271
     LCURL           reduce using rule 188 (IncDecStmt -> Expression DECR .)
 
 
-state 272
+state 271
 
     (228) ForStmt -> FOR ConditionBlockOpt . Block
     (47) Block -> . LCURL StatementList RCURL
 
     LCURL           shift and go to state 94
 
-    Block                          shift and go to state 313
+    Block                          shift and go to state 312
 
-state 273
+state 272
 
     (229) ConditionBlockOpt -> epsilon .
     (179) SimpleStmt -> epsilon .
@@ -6755,28 +6756,28 @@ state 273
     RANGE           reduce using rule 238 (ExpressionIdentListOpt -> epsilon .)
 
 
-state 274
+state 273
 
     (230) ConditionBlockOpt -> Condition .
 
     LCURL           reduce using rule 230 (ConditionBlockOpt -> Condition .)
 
 
-state 275
+state 274
 
     (231) ConditionBlockOpt -> ForClause .
 
     LCURL           reduce using rule 231 (ConditionBlockOpt -> ForClause .)
 
 
-state 276
+state 275
 
     (232) ConditionBlockOpt -> RangeClause .
 
     LCURL           reduce using rule 232 (ConditionBlockOpt -> RangeClause .)
 
 
-state 277
+state 276
 
     (233) Condition -> Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -6811,22 +6812,22 @@ state 277
 
     LCURL           reduce using rule 233 (Condition -> Expression .)
     SEMICOLON       reduce using rule 186 (ExpressionStmt -> Expression .)
-    INCR            shift and go to state 270
-    DECR            shift and go to state 271
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    INCR            shift and go to state 269
+    DECR            shift and go to state 270
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     COMMA           reduce using rule 265 (epsilon -> .)
     ASSIGN          reduce using rule 265 (epsilon -> .)
     PLUS_ASSIGN     reduce using rule 265 (epsilon -> .)
@@ -6844,35 +6845,35 @@ state 277
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    ExpressionRep                  shift and go to state 204
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    epsilon                        shift and go to state 205
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    ExpressionRep                  shift and go to state 203
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    epsilon                        shift and go to state 204
+    UnaryOp                        shift and go to state 178
 
-state 278
+state 277
 
     (234) ForClause -> SimpleStmt . SEMICOLON ConditionOpt SEMICOLON SimpleStmt
 
-    SEMICOLON       shift and go to state 314
+    SEMICOLON       shift and go to state 313
 
 
-state 279
+state 278
 
     (237) RangeClause -> ExpressionIdentListOpt . RANGE Expression
 
-    RANGE           shift and go to state 315
+    RANGE           shift and go to state 314
 
 
-state 280
+state 279
 
     (239) ExpressionIdentListOpt -> ExpressionIdentifier .
 
     RANGE           reduce using rule 239 (ExpressionIdentListOpt -> ExpressionIdentifier .)
 
 
-state 281
+state 280
 
     (189) Assignment -> ExpressionList . assign_op ExpressionList
     (240) ExpressionIdentifier -> ExpressionList . ASSIGN
@@ -6889,27 +6890,27 @@ state 281
     (200) AssignOp -> . RSHIFT_ASSIGN
     (201) AssignOp -> . ASSIGN
 
-    ASSIGN          shift and go to state 316
-    PLUS_ASSIGN     shift and go to state 286
-    MINUS_ASSIGN    shift and go to state 287
-    STAR_ASSIGN     shift and go to state 288
-    DIVIDE_ASSIGN   shift and go to state 289
-    MOD_ASSIGN      shift and go to state 290
-    AND_ASSIGN      shift and go to state 291
-    OR_ASSIGN       shift and go to state 292
-    XOR_ASSIGN      shift and go to state 293
-    LSHIFT_ASSIGN   shift and go to state 294
-    RSHIFT_ASSIGN   shift and go to state 295
+    ASSIGN          shift and go to state 315
+    PLUS_ASSIGN     shift and go to state 285
+    MINUS_ASSIGN    shift and go to state 286
+    STAR_ASSIGN     shift and go to state 287
+    DIVIDE_ASSIGN   shift and go to state 288
+    MOD_ASSIGN      shift and go to state 289
+    AND_ASSIGN      shift and go to state 290
+    OR_ASSIGN       shift and go to state 291
+    XOR_ASSIGN      shift and go to state 292
+    LSHIFT_ASSIGN   shift and go to state 293
+    RSHIFT_ASSIGN   shift and go to state 294
 
-    assign_op                      shift and go to state 284
-    AssignOp                       shift and go to state 285
+    assign_op                      shift and go to state 283
+    AssignOp                       shift and go to state 284
 
-state 282
+state 281
 
     (85) ShortVarDecl -> IDENTIFIER . QUICK_ASSIGN Expression
     (102) OperandName -> IDENTIFIER .
 
-    QUICK_ASSIGN    shift and go to state 283
+    QUICK_ASSIGN    shift and go to state 282
     DOT             reduce using rule 102 (OperandName -> IDENTIFIER .)
     LSQUARE         reduce using rule 102 (OperandName -> IDENTIFIER .)
     LPAREN          reduce using rule 102 (OperandName -> IDENTIFIER .)
@@ -6949,7 +6950,7 @@ state 282
     RSHIFT_ASSIGN   reduce using rule 102 (OperandName -> IDENTIFIER .)
 
 
-state 283
+state 282
 
     (85) ShortVarDecl -> IDENTIFIER QUICK_ASSIGN . Expression
     (139) Expression -> . UnaryExpr
@@ -6998,7 +6999,7 @@ state 283
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 317
+    Expression                     shift and go to state 316
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -7008,7 +7009,7 @@ state 283
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 284
+state 283
 
     (189) Assignment -> ExpressionList assign_op . ExpressionList
     (66) ExpressionList -> . Expression ExpressionRep
@@ -7058,7 +7059,7 @@ state 284
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionList                 shift and go to state 318
+    ExpressionList                 shift and go to state 317
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -7069,7 +7070,7 @@ state 284
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 285
+state 284
 
     (190) assign_op -> AssignOp .
 
@@ -7090,7 +7091,7 @@ state 285
     STRING          reduce using rule 190 (assign_op -> AssignOp .)
 
 
-state 286
+state 285
 
     (191) AssignOp -> PLUS_ASSIGN .
 
@@ -7111,7 +7112,7 @@ state 286
     STRING          reduce using rule 191 (AssignOp -> PLUS_ASSIGN .)
 
 
-state 287
+state 286
 
     (192) AssignOp -> MINUS_ASSIGN .
 
@@ -7132,7 +7133,7 @@ state 287
     STRING          reduce using rule 192 (AssignOp -> MINUS_ASSIGN .)
 
 
-state 288
+state 287
 
     (193) AssignOp -> STAR_ASSIGN .
 
@@ -7153,7 +7154,7 @@ state 288
     STRING          reduce using rule 193 (AssignOp -> STAR_ASSIGN .)
 
 
-state 289
+state 288
 
     (194) AssignOp -> DIVIDE_ASSIGN .
 
@@ -7174,7 +7175,7 @@ state 289
     STRING          reduce using rule 194 (AssignOp -> DIVIDE_ASSIGN .)
 
 
-state 290
+state 289
 
     (195) AssignOp -> MOD_ASSIGN .
 
@@ -7195,7 +7196,7 @@ state 290
     STRING          reduce using rule 195 (AssignOp -> MOD_ASSIGN .)
 
 
-state 291
+state 290
 
     (196) AssignOp -> AND_ASSIGN .
 
@@ -7216,7 +7217,7 @@ state 291
     STRING          reduce using rule 196 (AssignOp -> AND_ASSIGN .)
 
 
-state 292
+state 291
 
     (197) AssignOp -> OR_ASSIGN .
 
@@ -7237,7 +7238,7 @@ state 292
     STRING          reduce using rule 197 (AssignOp -> OR_ASSIGN .)
 
 
-state 293
+state 292
 
     (198) AssignOp -> XOR_ASSIGN .
 
@@ -7258,7 +7259,7 @@ state 293
     STRING          reduce using rule 198 (AssignOp -> XOR_ASSIGN .)
 
 
-state 294
+state 293
 
     (199) AssignOp -> LSHIFT_ASSIGN .
 
@@ -7279,7 +7280,7 @@ state 294
     STRING          reduce using rule 199 (AssignOp -> LSHIFT_ASSIGN .)
 
 
-state 295
+state 294
 
     (200) AssignOp -> RSHIFT_ASSIGN .
 
@@ -7300,7 +7301,7 @@ state 295
     STRING          reduce using rule 200 (AssignOp -> RSHIFT_ASSIGN .)
 
 
-state 296
+state 295
 
     (201) AssignOp -> ASSIGN .
 
@@ -7321,14 +7322,14 @@ state 296
     STRING          reduce using rule 201 (AssignOp -> ASSIGN .)
 
 
-state 297
+state 296
 
     (210) ExprSwitchStmt -> SWITCH ExpressionOpt . LCURL ExprCaseClauseRep RCURL
 
-    LCURL           shift and go to state 319
+    LCURL           shift and go to state 318
 
 
-state 298
+state 297
 
     (216) TypeSwitchStmt -> SWITCH SimpleStmtOpt . TypeSwitchGuard LCURL TypeCaseClauseOpt RCURL
     (217) TypeSwitchGuard -> . IdentifierOpt PrimaryExpr DOT LPAREN TYPE RPAREN
@@ -7337,7 +7338,7 @@ state 298
     (265) epsilon -> .
 
   ! shift/reduce conflict for IDENTIFIER resolved as shift
-    IDENTIFIER      shift and go to state 322
+    IDENTIFIER      shift and go to state 321
     LPAREN          reduce using rule 265 (epsilon -> .)
     TYPECAST        reduce using rule 265 (epsilon -> .)
     INTEGER         reduce using rule 265 (epsilon -> .)
@@ -7350,11 +7351,11 @@ state 298
 
   ! IDENTIFIER      [ reduce using rule 265 (epsilon -> .) ]
 
-    TypeSwitchGuard                shift and go to state 320
-    IdentifierOpt                  shift and go to state 321
-    epsilon                        shift and go to state 323
+    TypeSwitchGuard                shift and go to state 319
+    IdentifierOpt                  shift and go to state 320
+    epsilon                        shift and go to state 322
 
-state 299
+state 298
 
     (141) ExpressionOpt -> Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -7389,22 +7390,22 @@ state 299
 
     LCURL           reduce using rule 141 (ExpressionOpt -> Expression .)
     SEMICOLON       reduce using rule 186 (ExpressionStmt -> Expression .)
-    INCR            shift and go to state 270
-    DECR            shift and go to state 271
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    INCR            shift and go to state 269
+    DECR            shift and go to state 270
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     COMMA           reduce using rule 265 (epsilon -> .)
     PLUS_ASSIGN     reduce using rule 265 (epsilon -> .)
     MINUS_ASSIGN    reduce using rule 265 (epsilon -> .)
@@ -7422,14 +7423,14 @@ state 299
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    ExpressionRep                  shift and go to state 204
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    epsilon                        shift and go to state 205
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    ExpressionRep                  shift and go to state 203
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    epsilon                        shift and go to state 204
+    UnaryOp                        shift and go to state 178
 
-state 300
+state 299
 
     (142) ExpressionOpt -> epsilon .
     (204) SimpleStmtOpt -> epsilon .
@@ -7449,14 +7450,14 @@ state 300
     SEMICOLON       reduce using rule 179 (SimpleStmt -> epsilon .)
 
 
-state 301
+state 300
 
     (203) SimpleStmtOpt -> SimpleStmt . SEMICOLON
 
-    SEMICOLON       shift and go to state 324
+    SEMICOLON       shift and go to state 323
 
 
-state 302
+state 301
 
     (45) ParameterDecl -> IdentifierList Type .
 
@@ -7464,14 +7465,14 @@ state 302
     RPAREN          reduce using rule 45 (ParameterDecl -> IdentifierList Type .)
 
 
-state 303
+state 302
 
     (133) TypeAssertion -> DOT LPAREN Type . RPAREN
 
-    RPAREN          shift and go to state 325
+    RPAREN          shift and go to state 324
 
 
-state 304
+state 303
 
     (130) Index -> LSQUARE Expression RSQUARE .
 
@@ -7517,7 +7518,7 @@ state 304
     LCURL           reduce using rule 130 (Index -> LSQUARE Expression RSQUARE .)
 
 
-state 305
+state 304
 
     (131) Slice -> LSQUARE ExpressionOpt COLON . ExpressionOpt RSQUARE
     (132) Slice -> LSQUARE ExpressionOpt COLON . Expression COLON Expression RSQUARE
@@ -7571,9 +7572,9 @@ state 305
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionOpt                  shift and go to state 326
-    Expression                     shift and go to state 327
-    epsilon                        shift and go to state 248
+    ExpressionOpt                  shift and go to state 325
+    Expression                     shift and go to state 326
+    epsilon                        shift and go to state 247
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -7583,7 +7584,7 @@ state 305
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 306
+state 305
 
     (134) Arguments -> LPAREN ExpressionListTypeOpt RPAREN .
 
@@ -7629,7 +7630,7 @@ state 306
     LCURL           reduce using rule 134 (Arguments -> LPAREN ExpressionListTypeOpt RPAREN .)
 
 
-state 307
+state 306
 
     (167) Conversion -> TYPECAST Type LPAREN Expression . RPAREN
     (140) Expression -> Expression . BinaryOp Expression
@@ -7655,32 +7656,32 @@ state 307
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    RPAREN          shift and go to state 328
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    RPAREN          shift and go to state 327
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 308
+state 307
 
     (24) FieldDeclRep -> FieldDeclRep FieldDecl SEMICOLON .
 
@@ -7688,7 +7689,7 @@ state 308
     IDENTIFIER      reduce using rule 24 (FieldDeclRep -> FieldDeclRep FieldDecl SEMICOLON .)
 
 
-state 309
+state 308
 
     (26) FieldDecl -> IdentifierList Type . TagOpt
     (27) TagOpt -> . Tag
@@ -7696,14 +7697,14 @@ state 309
     (29) Tag -> . STRING
     (265) epsilon -> .
 
-    STRING          shift and go to state 332
+    STRING          shift and go to state 331
     SEMICOLON       reduce using rule 265 (epsilon -> .)
 
-    TagOpt                         shift and go to state 329
-    Tag                            shift and go to state 330
-    epsilon                        shift and go to state 331
+    TagOpt                         shift and go to state 328
+    Tag                            shift and go to state 329
+    epsilon                        shift and go to state 330
 
-state 310
+state 309
 
     (67) ExpressionRep -> ExpressionRep COMMA Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -7745,38 +7746,38 @@ state 310
     LSHIFT_ASSIGN   reduce using rule 67 (ExpressionRep -> ExpressionRep COMMA Expression .)
     RSHIFT_ASSIGN   reduce using rule 67 (ExpressionRep -> ExpressionRep COMMA Expression .)
     ASSIGN          reduce using rule 67 (ExpressionRep -> ExpressionRep COMMA Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 311
+state 310
 
     (184) LabeledStmt -> Label COLON Statement .
 
     SEMICOLON       reduce using rule 184 (LabeledStmt -> Label COLON Statement .)
 
 
-state 312
+state 311
 
     (202) IfStmt -> IF Expression Block . ElseOpt
     (205) ElseOpt -> . ELSE IfStmt
@@ -7784,20 +7785,20 @@ state 312
     (207) ElseOpt -> . epsilon
     (265) epsilon -> .
 
-    ELSE            shift and go to state 334
+    ELSE            shift and go to state 333
     SEMICOLON       reduce using rule 265 (epsilon -> .)
 
-    ElseOpt                        shift and go to state 333
-    epsilon                        shift and go to state 335
+    ElseOpt                        shift and go to state 332
+    epsilon                        shift and go to state 334
 
-state 313
+state 312
 
     (228) ForStmt -> FOR ConditionBlockOpt Block .
 
     SEMICOLON       reduce using rule 228 (ForStmt -> FOR ConditionBlockOpt Block .)
 
 
-state 314
+state 313
 
     (234) ForClause -> SimpleStmt SEMICOLON . ConditionOpt SEMICOLON SimpleStmt
     (235) ConditionOpt -> . epsilon
@@ -7851,10 +7852,10 @@ state 314
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ConditionOpt                   shift and go to state 336
-    epsilon                        shift and go to state 337
-    Condition                      shift and go to state 338
-    Expression                     shift and go to state 339
+    ConditionOpt                   shift and go to state 335
+    epsilon                        shift and go to state 336
+    Condition                      shift and go to state 337
+    Expression                     shift and go to state 338
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -7864,7 +7865,7 @@ state 314
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 315
+state 314
 
     (237) RangeClause -> ExpressionIdentListOpt RANGE . Expression
     (139) Expression -> . UnaryExpr
@@ -7913,7 +7914,7 @@ state 315
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 340
+    Expression                     shift and go to state 339
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -7923,7 +7924,7 @@ state 315
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 316
+state 315
 
     (240) ExpressionIdentifier -> ExpressionList ASSIGN .
     (201) AssignOp -> ASSIGN .
@@ -7946,7 +7947,7 @@ state 316
     STRING          reduce using rule 201 (AssignOp -> ASSIGN .)
 
 
-state 317
+state 316
 
     (85) ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -7974,31 +7975,31 @@ state 317
 
     SEMICOLON       reduce using rule 85 (ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression .)
     LCURL           reduce using rule 85 (ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 318
+state 317
 
     (189) Assignment -> ExpressionList assign_op ExpressionList .
 
@@ -8006,7 +8007,7 @@ state 318
     LCURL           reduce using rule 189 (Assignment -> ExpressionList assign_op ExpressionList .)
 
 
-state 319
+state 318
 
     (210) ExprSwitchStmt -> SWITCH ExpressionOpt LCURL . ExprCaseClauseRep RCURL
     (211) ExprCaseClauseRep -> . ExprCaseClauseRep ExprCaseClause
@@ -8017,17 +8018,17 @@ state 319
     CASE            reduce using rule 265 (epsilon -> .)
     DEFAULT         reduce using rule 265 (epsilon -> .)
 
-    ExprCaseClauseRep              shift and go to state 341
-    epsilon                        shift and go to state 342
+    ExprCaseClauseRep              shift and go to state 340
+    epsilon                        shift and go to state 341
 
-state 320
+state 319
 
     (216) TypeSwitchStmt -> SWITCH SimpleStmtOpt TypeSwitchGuard . LCURL TypeCaseClauseOpt RCURL
 
-    LCURL           shift and go to state 343
+    LCURL           shift and go to state 342
 
 
-state 321
+state 320
 
     (217) TypeSwitchGuard -> IdentifierOpt . PrimaryExpr DOT LPAREN TYPE RPAREN
     (122) PrimaryExpr -> . Operand
@@ -8062,21 +8063,21 @@ state 321
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    PrimaryExpr                    shift and go to state 344
+    PrimaryExpr                    shift and go to state 343
     Operand                        shift and go to state 121
     Conversion                     shift and go to state 122
     Literal                        shift and go to state 127
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 322
+state 321
 
     (218) IdentifierOpt -> IDENTIFIER . QUICK_ASSIGN
 
-    QUICK_ASSIGN    shift and go to state 345
+    QUICK_ASSIGN    shift and go to state 344
 
 
-state 323
+state 322
 
     (219) IdentifierOpt -> epsilon .
 
@@ -8092,7 +8093,7 @@ state 323
     STRING          reduce using rule 219 (IdentifierOpt -> epsilon .)
 
 
-state 324
+state 323
 
     (203) SimpleStmtOpt -> SimpleStmt SEMICOLON .
 
@@ -8108,7 +8109,7 @@ state 324
     STRING          reduce using rule 203 (SimpleStmtOpt -> SimpleStmt SEMICOLON .)
 
 
-state 325
+state 324
 
     (133) TypeAssertion -> DOT LPAREN Type RPAREN .
 
@@ -8154,14 +8155,14 @@ state 325
     LCURL           reduce using rule 133 (TypeAssertion -> DOT LPAREN Type RPAREN .)
 
 
-state 326
+state 325
 
     (131) Slice -> LSQUARE ExpressionOpt COLON ExpressionOpt . RSQUARE
 
-    RSQUARE         shift and go to state 346
+    RSQUARE         shift and go to state 345
 
 
-state 327
+state 326
 
     (132) Slice -> LSQUARE ExpressionOpt COLON Expression . COLON Expression RSQUARE
     (141) ExpressionOpt -> Expression .
@@ -8188,33 +8189,33 @@ state 327
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    COLON           shift and go to state 347
+    COLON           shift and go to state 346
     RSQUARE         reduce using rule 141 (ExpressionOpt -> Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 328
+state 327
 
     (167) Conversion -> TYPECAST Type LPAREN Expression RPAREN .
 
@@ -8260,83 +8261,83 @@ state 328
     LCURL           reduce using rule 167 (Conversion -> TYPECAST Type LPAREN Expression RPAREN .)
 
 
-state 329
+state 328
 
     (26) FieldDecl -> IdentifierList Type TagOpt .
 
     SEMICOLON       reduce using rule 26 (FieldDecl -> IdentifierList Type TagOpt .)
 
 
-state 330
+state 329
 
     (27) TagOpt -> Tag .
 
     SEMICOLON       reduce using rule 27 (TagOpt -> Tag .)
 
 
-state 331
+state 330
 
     (28) TagOpt -> epsilon .
 
     SEMICOLON       reduce using rule 28 (TagOpt -> epsilon .)
 
 
-state 332
+state 331
 
     (29) Tag -> STRING .
 
     SEMICOLON       reduce using rule 29 (Tag -> STRING .)
 
 
-state 333
+state 332
 
     (202) IfStmt -> IF Expression Block ElseOpt .
 
     SEMICOLON       reduce using rule 202 (IfStmt -> IF Expression Block ElseOpt .)
 
 
-state 334
+state 333
 
     (205) ElseOpt -> ELSE . IfStmt
     (206) ElseOpt -> ELSE . Block
     (202) IfStmt -> . IF Expression Block ElseOpt
     (47) Block -> . LCURL StatementList RCURL
 
-    IF              shift and go to state 229
+    IF              shift and go to state 228
     LCURL           shift and go to state 94
 
-    IfStmt                         shift and go to state 348
-    Block                          shift and go to state 349
+    IfStmt                         shift and go to state 347
+    Block                          shift and go to state 348
 
-state 335
+state 334
 
     (207) ElseOpt -> epsilon .
 
     SEMICOLON       reduce using rule 207 (ElseOpt -> epsilon .)
 
 
-state 336
+state 335
 
     (234) ForClause -> SimpleStmt SEMICOLON ConditionOpt . SEMICOLON SimpleStmt
 
-    SEMICOLON       shift and go to state 350
+    SEMICOLON       shift and go to state 349
 
 
-state 337
+state 336
 
     (235) ConditionOpt -> epsilon .
 
     SEMICOLON       reduce using rule 235 (ConditionOpt -> epsilon .)
 
 
-state 338
+state 337
 
     (236) ConditionOpt -> Condition .
 
     SEMICOLON       reduce using rule 236 (ConditionOpt -> Condition .)
 
 
-state 339
+state 338
 
     (233) Condition -> Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -8363,31 +8364,31 @@ state 339
     (166) UnaryOp -> . AND
 
     SEMICOLON       reduce using rule 233 (Condition -> Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 340
+state 339
 
     (237) RangeClause -> ExpressionIdentListOpt RANGE Expression .
     (140) Expression -> Expression . BinaryOp Expression
@@ -8414,31 +8415,31 @@ state 340
     (166) UnaryOp -> . AND
 
     LCURL           reduce using rule 237 (RangeClause -> ExpressionIdentListOpt RANGE Expression .)
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 341
+state 340
 
     (210) ExprSwitchStmt -> SWITCH ExpressionOpt LCURL ExprCaseClauseRep . RCURL
     (211) ExprCaseClauseRep -> ExprCaseClauseRep . ExprCaseClause
@@ -8446,14 +8447,14 @@ state 341
     (214) ExprSwitchCase -> . CASE ExpressionList
     (215) ExprSwitchCase -> . DEFAULT
 
-    RCURL           shift and go to state 351
-    CASE            shift and go to state 354
-    DEFAULT         shift and go to state 355
+    RCURL           shift and go to state 350
+    CASE            shift and go to state 353
+    DEFAULT         shift and go to state 354
 
-    ExprCaseClause                 shift and go to state 352
-    ExprSwitchCase                 shift and go to state 353
+    ExprCaseClause                 shift and go to state 351
+    ExprSwitchCase                 shift and go to state 352
 
-state 342
+state 341
 
     (212) ExprCaseClauseRep -> epsilon .
 
@@ -8462,7 +8463,7 @@ state 342
     DEFAULT         reduce using rule 212 (ExprCaseClauseRep -> epsilon .)
 
 
-state 343
+state 342
 
     (216) TypeSwitchStmt -> SWITCH SimpleStmtOpt TypeSwitchGuard LCURL . TypeCaseClauseOpt RCURL
     (220) TypeCaseClauseOpt -> . TypeCaseClauseOpt TypeCaseClause
@@ -8473,10 +8474,10 @@ state 343
     CASE            reduce using rule 265 (epsilon -> .)
     DEFAULT         reduce using rule 265 (epsilon -> .)
 
-    TypeCaseClauseOpt              shift and go to state 356
-    epsilon                        shift and go to state 357
+    TypeCaseClauseOpt              shift and go to state 355
+    epsilon                        shift and go to state 356
 
-state 344
+state 343
 
     (217) TypeSwitchGuard -> IdentifierOpt PrimaryExpr . DOT LPAREN TYPE RPAREN
     (123) PrimaryExpr -> PrimaryExpr . Selector
@@ -8491,17 +8492,17 @@ state 344
     (133) TypeAssertion -> . DOT LPAREN Type RPAREN
     (134) Arguments -> . LPAREN ExpressionListTypeOpt RPAREN
 
-    DOT             shift and go to state 358
-    LSQUARE         shift and go to state 192
-    LPAREN          shift and go to state 193
+    DOT             shift and go to state 357
+    LSQUARE         shift and go to state 191
+    LPAREN          shift and go to state 192
 
-    Selector                       shift and go to state 186
-    Index                          shift and go to state 187
-    Slice                          shift and go to state 188
-    TypeAssertion                  shift and go to state 189
-    Arguments                      shift and go to state 190
+    Selector                       shift and go to state 185
+    Index                          shift and go to state 186
+    Slice                          shift and go to state 187
+    TypeAssertion                  shift and go to state 188
+    Arguments                      shift and go to state 189
 
-state 345
+state 344
 
     (218) IdentifierOpt -> IDENTIFIER QUICK_ASSIGN .
 
@@ -8517,7 +8518,7 @@ state 345
     STRING          reduce using rule 218 (IdentifierOpt -> IDENTIFIER QUICK_ASSIGN .)
 
 
-state 346
+state 345
 
     (131) Slice -> LSQUARE ExpressionOpt COLON ExpressionOpt RSQUARE .
 
@@ -8563,7 +8564,7 @@ state 346
     LCURL           reduce using rule 131 (Slice -> LSQUARE ExpressionOpt COLON ExpressionOpt RSQUARE .)
 
 
-state 347
+state 346
 
     (132) Slice -> LSQUARE ExpressionOpt COLON Expression COLON . Expression RSQUARE
     (139) Expression -> . UnaryExpr
@@ -8612,7 +8613,7 @@ state 347
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    Expression                     shift and go to state 359
+    Expression                     shift and go to state 358
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -8622,21 +8623,21 @@ state 347
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 348
+state 347
 
     (205) ElseOpt -> ELSE IfStmt .
 
     SEMICOLON       reduce using rule 205 (ElseOpt -> ELSE IfStmt .)
 
 
-state 349
+state 348
 
     (206) ElseOpt -> ELSE Block .
 
     SEMICOLON       reduce using rule 206 (ElseOpt -> ELSE Block .)
 
 
-state 350
+state 349
 
     (234) ForClause -> SimpleStmt SEMICOLON ConditionOpt SEMICOLON . SimpleStmt
     (179) SimpleStmt -> . epsilon
@@ -8682,7 +8683,7 @@ state 350
     (101) BasicLit -> . STRING
 
     LCURL           reduce using rule 265 (epsilon -> .)
-    IDENTIFIER      shift and go to state 282
+    IDENTIFIER      shift and go to state 281
     NOT             shift and go to state 120
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
@@ -8698,14 +8699,14 @@ state 350
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    SimpleStmt                     shift and go to state 360
-    epsilon                        shift and go to state 220
-    ExpressionStmt                 shift and go to state 221
-    IncDecStmt                     shift and go to state 222
-    Assignment                     shift and go to state 223
-    ShortVarDecl                   shift and go to state 224
-    Expression                     shift and go to state 230
-    ExpressionList                 shift and go to state 235
+    SimpleStmt                     shift and go to state 359
+    epsilon                        shift and go to state 219
+    ExpressionStmt                 shift and go to state 220
+    IncDecStmt                     shift and go to state 221
+    Assignment                     shift and go to state 222
+    ShortVarDecl                   shift and go to state 223
+    Expression                     shift and go to state 229
+    ExpressionList                 shift and go to state 234
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
     UnaryOp                        shift and go to state 119
@@ -8715,14 +8716,14 @@ state 350
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 351
+state 350
 
     (210) ExprSwitchStmt -> SWITCH ExpressionOpt LCURL ExprCaseClauseRep RCURL .
 
     SEMICOLON       reduce using rule 210 (ExprSwitchStmt -> SWITCH ExpressionOpt LCURL ExprCaseClauseRep RCURL .)
 
 
-state 352
+state 351
 
     (211) ExprCaseClauseRep -> ExprCaseClauseRep ExprCaseClause .
 
@@ -8731,14 +8732,14 @@ state 352
     DEFAULT         reduce using rule 211 (ExprCaseClauseRep -> ExprCaseClauseRep ExprCaseClause .)
 
 
-state 353
+state 352
 
     (213) ExprCaseClause -> ExprSwitchCase . COLON StatementList
 
-    COLON           shift and go to state 361
+    COLON           shift and go to state 360
 
 
-state 354
+state 353
 
     (214) ExprSwitchCase -> CASE . ExpressionList
     (66) ExpressionList -> . Expression ExpressionRep
@@ -8788,7 +8789,7 @@ state 354
     RUNE            shift and go to state 138
     STRING          shift and go to state 139
 
-    ExpressionList                 shift and go to state 362
+    ExpressionList                 shift and go to state 361
     Expression                     shift and go to state 153
     UnaryExpr                      shift and go to state 117
     PrimaryExpr                    shift and go to state 118
@@ -8799,14 +8800,14 @@ state 354
     OperandName                    shift and go to state 128
     BasicLit                       shift and go to state 131
 
-state 355
+state 354
 
     (215) ExprSwitchCase -> DEFAULT .
 
     COLON           reduce using rule 215 (ExprSwitchCase -> DEFAULT .)
 
 
-state 356
+state 355
 
     (216) TypeSwitchStmt -> SWITCH SimpleStmtOpt TypeSwitchGuard LCURL TypeCaseClauseOpt . RCURL
     (220) TypeCaseClauseOpt -> TypeCaseClauseOpt . TypeCaseClause
@@ -8814,14 +8815,14 @@ state 356
     (223) TypeSwitchCase -> . CASE TypeList
     (224) TypeSwitchCase -> . DEFAULT
 
-    RCURL           shift and go to state 363
-    CASE            shift and go to state 366
-    DEFAULT         shift and go to state 367
+    RCURL           shift and go to state 362
+    CASE            shift and go to state 365
+    DEFAULT         shift and go to state 366
 
-    TypeCaseClause                 shift and go to state 364
-    TypeSwitchCase                 shift and go to state 365
+    TypeCaseClause                 shift and go to state 363
+    TypeSwitchCase                 shift and go to state 364
 
-state 357
+state 356
 
     (221) TypeCaseClauseOpt -> epsilon .
 
@@ -8830,17 +8831,17 @@ state 357
     DEFAULT         reduce using rule 221 (TypeCaseClauseOpt -> epsilon .)
 
 
-state 358
+state 357
 
     (217) TypeSwitchGuard -> IdentifierOpt PrimaryExpr DOT . LPAREN TYPE RPAREN
     (129) Selector -> DOT . IDENTIFIER
     (133) TypeAssertion -> DOT . LPAREN Type RPAREN
 
-    LPAREN          shift and go to state 368
-    IDENTIFIER      shift and go to state 244
+    LPAREN          shift and go to state 367
+    IDENTIFIER      shift and go to state 243
 
 
-state 359
+state 358
 
     (132) Slice -> LSQUARE ExpressionOpt COLON Expression COLON Expression . RSQUARE
     (140) Expression -> Expression . BinaryOp Expression
@@ -8866,39 +8867,39 @@ state 359
     (165) UnaryOp -> . STAR
     (166) UnaryOp -> . AND
 
-    RSQUARE         shift and go to state 369
-    LOGICAL_OR      shift and go to state 169
-    LOGICAL_AND     shift and go to state 170
-    EQUALS          shift and go to state 173
-    NOT_ASSIGN      shift and go to state 174
-    LESSER          shift and go to state 175
-    GREATER         shift and go to state 176
-    LESS_EQUALS     shift and go to state 177
-    MORE_EQUALS     shift and go to state 178
-    OR              shift and go to state 180
-    XOR             shift and go to state 181
-    DIVIDE          shift and go to state 182
-    MOD             shift and go to state 183
-    LSHIFT          shift and go to state 184
-    RSHIFT          shift and go to state 185
+    RSQUARE         shift and go to state 368
+    LOGICAL_OR      shift and go to state 168
+    LOGICAL_AND     shift and go to state 169
+    EQUALS          shift and go to state 172
+    NOT_ASSIGN      shift and go to state 173
+    LESSER          shift and go to state 174
+    GREATER         shift and go to state 175
+    LESS_EQUALS     shift and go to state 176
+    MORE_EQUALS     shift and go to state 177
+    OR              shift and go to state 179
+    XOR             shift and go to state 180
+    DIVIDE          shift and go to state 181
+    MOD             shift and go to state 182
+    LSHIFT          shift and go to state 183
+    RSHIFT          shift and go to state 184
     PLUS            shift and go to state 123
     MINUS           shift and go to state 124
     STAR            shift and go to state 125
     AND             shift and go to state 126
 
-    BinaryOp                       shift and go to state 168
-    RelOp                          shift and go to state 171
-    AddMulOp                       shift and go to state 172
-    UnaryOp                        shift and go to state 179
+    BinaryOp                       shift and go to state 167
+    RelOp                          shift and go to state 170
+    AddMulOp                       shift and go to state 171
+    UnaryOp                        shift and go to state 178
 
-state 360
+state 359
 
     (234) ForClause -> SimpleStmt SEMICOLON ConditionOpt SEMICOLON SimpleStmt .
 
     LCURL           reduce using rule 234 (ForClause -> SimpleStmt SEMICOLON ConditionOpt SEMICOLON SimpleStmt .)
 
 
-state 361
+state 360
 
     (213) ExprCaseClause -> ExprSwitchCase COLON . StatementList
     (48) StatementList -> . StatementRep
@@ -8937,25 +8938,25 @@ state 361
     CASE            reduce using rule 265 (epsilon -> .)
     DEFAULT         reduce using rule 265 (epsilon -> .)
 
-    StatementList                  shift and go to state 370
-    StatementRep                   shift and go to state 156
-    epsilon                        shift and go to state 157
+    StatementList                  shift and go to state 369
+    StatementRep                   shift and go to state 155
+    epsilon                        shift and go to state 156
 
-state 362
+state 361
 
     (214) ExprSwitchCase -> CASE ExpressionList .
 
     COLON           reduce using rule 214 (ExprSwitchCase -> CASE ExpressionList .)
 
 
-state 363
+state 362
 
     (216) TypeSwitchStmt -> SWITCH SimpleStmtOpt TypeSwitchGuard LCURL TypeCaseClauseOpt RCURL .
 
     SEMICOLON       reduce using rule 216 (TypeSwitchStmt -> SWITCH SimpleStmtOpt TypeSwitchGuard LCURL TypeCaseClauseOpt RCURL .)
 
 
-state 364
+state 363
 
     (220) TypeCaseClauseOpt -> TypeCaseClauseOpt TypeCaseClause .
 
@@ -8964,14 +8965,14 @@ state 364
     DEFAULT         reduce using rule 220 (TypeCaseClauseOpt -> TypeCaseClauseOpt TypeCaseClause .)
 
 
-state 365
+state 364
 
     (222) TypeCaseClause -> TypeSwitchCase . COLON StatementList
 
-    COLON           shift and go to state 371
+    COLON           shift and go to state 370
 
 
-state 366
+state 365
 
     (223) TypeSwitchCase -> CASE . TypeList
     (225) TypeList -> . Type TypeRep
@@ -9010,8 +9011,8 @@ state 366
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    TypeList                       shift and go to state 372
-    Type                           shift and go to state 373
+    TypeList                       shift and go to state 371
+    Type                           shift and go to state 372
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -9020,14 +9021,14 @@ state 366
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 367
+state 366
 
     (224) TypeSwitchCase -> DEFAULT .
 
     COLON           reduce using rule 224 (TypeSwitchCase -> DEFAULT .)
 
 
-state 368
+state 367
 
     (217) TypeSwitchGuard -> IdentifierOpt PrimaryExpr DOT LPAREN . TYPE RPAREN
     (133) TypeAssertion -> DOT LPAREN . Type RPAREN
@@ -9052,7 +9053,7 @@ state 368
     (23) StructType -> . STRUCT LCURL FieldDeclRep RCURL
     (30) PointerType -> . STAR BaseType
 
-    TYPE            shift and go to state 374
+    TYPE            shift and go to state 373
     LPAREN          shift and go to state 62
     INT_T           shift and go to state 68
     FLOAT_T         shift and go to state 69
@@ -9066,7 +9067,7 @@ state 368
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 303
+    Type                           shift and go to state 302
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -9075,7 +9076,7 @@ state 368
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 369
+state 368
 
     (132) Slice -> LSQUARE ExpressionOpt COLON Expression COLON Expression RSQUARE .
 
@@ -9121,7 +9122,7 @@ state 369
     LCURL           reduce using rule 132 (Slice -> LSQUARE ExpressionOpt COLON Expression COLON Expression RSQUARE .)
 
 
-state 370
+state 369
 
     (213) ExprCaseClause -> ExprSwitchCase COLON StatementList .
 
@@ -9130,7 +9131,7 @@ state 370
     DEFAULT         reduce using rule 213 (ExprCaseClause -> ExprSwitchCase COLON StatementList .)
 
 
-state 371
+state 370
 
     (222) TypeCaseClause -> TypeSwitchCase COLON . StatementList
     (48) StatementList -> . StatementRep
@@ -9169,18 +9170,18 @@ state 371
     CASE            reduce using rule 265 (epsilon -> .)
     DEFAULT         reduce using rule 265 (epsilon -> .)
 
-    StatementList                  shift and go to state 375
-    StatementRep                   shift and go to state 156
-    epsilon                        shift and go to state 157
+    StatementList                  shift and go to state 374
+    StatementRep                   shift and go to state 155
+    epsilon                        shift and go to state 156
 
-state 372
+state 371
 
     (223) TypeSwitchCase -> CASE TypeList .
 
     COLON           reduce using rule 223 (TypeSwitchCase -> CASE TypeList .)
 
 
-state 373
+state 372
 
     (225) TypeList -> Type . TypeRep
     (226) TypeRep -> . TypeRep COMMA Type
@@ -9190,19 +9191,19 @@ state 373
     COMMA           reduce using rule 265 (epsilon -> .)
     COLON           reduce using rule 265 (epsilon -> .)
 
-    TypeRep                        shift and go to state 376
-    epsilon                        shift and go to state 377
+    TypeRep                        shift and go to state 375
+    epsilon                        shift and go to state 376
 
-state 374
+state 373
 
     (217) TypeSwitchGuard -> IdentifierOpt PrimaryExpr DOT LPAREN TYPE . RPAREN
     (14) TypeToken -> TYPE . IDENTIFIER
 
-    RPAREN          shift and go to state 378
+    RPAREN          shift and go to state 377
     IDENTIFIER      shift and go to state 113
 
 
-state 375
+state 374
 
     (222) TypeCaseClause -> TypeSwitchCase COLON StatementList .
 
@@ -9211,16 +9212,16 @@ state 375
     DEFAULT         reduce using rule 222 (TypeCaseClause -> TypeSwitchCase COLON StatementList .)
 
 
-state 376
+state 375
 
     (225) TypeList -> Type TypeRep .
     (226) TypeRep -> TypeRep . COMMA Type
 
     COLON           reduce using rule 225 (TypeList -> Type TypeRep .)
-    COMMA           shift and go to state 379
+    COMMA           shift and go to state 378
 
 
-state 377
+state 376
 
     (227) TypeRep -> epsilon .
 
@@ -9228,14 +9229,14 @@ state 377
     COLON           reduce using rule 227 (TypeRep -> epsilon .)
 
 
-state 378
+state 377
 
     (217) TypeSwitchGuard -> IdentifierOpt PrimaryExpr DOT LPAREN TYPE RPAREN .
 
     LCURL           reduce using rule 217 (TypeSwitchGuard -> IdentifierOpt PrimaryExpr DOT LPAREN TYPE RPAREN .)
 
 
-state 379
+state 378
 
     (226) TypeRep -> TypeRep COMMA . Type
     (2) Type -> . TypeName
@@ -9273,7 +9274,7 @@ state 379
     STRUCT          shift and go to state 78
     STAR            shift and go to state 79
 
-    Type                           shift and go to state 380
+    Type                           shift and go to state 379
     TypeName                       shift and go to state 60
     TypeLit                        shift and go to state 61
     TypeToken                      shift and go to state 63
@@ -9282,7 +9283,7 @@ state 379
     StructType                     shift and go to state 66
     PointerType                    shift and go to state 67
 
-state 380
+state 379
 
     (226) TypeRep -> TypeRep COMMA Type .
 
@@ -9292,33 +9293,33 @@ state 380
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for RPAREN in state 158 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 236 resolved as shift
-WARNING: shift/reduce conflict for LPAREN in state 236 resolved as shift
-WARNING: shift/reduce conflict for TYPECAST in state 236 resolved as shift
-WARNING: shift/reduce conflict for INTEGER in state 236 resolved as shift
-WARNING: shift/reduce conflict for OCTAL in state 236 resolved as shift
-WARNING: shift/reduce conflict for HEX in state 236 resolved as shift
-WARNING: shift/reduce conflict for FLOAT in state 236 resolved as shift
-WARNING: shift/reduce conflict for IMAGINARY in state 236 resolved as shift
-WARNING: shift/reduce conflict for RUNE in state 236 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 236 resolved as shift
-WARNING: shift/reduce conflict for LOGICAL_OR in state 243 resolved as shift
-WARNING: shift/reduce conflict for LOGICAL_AND in state 243 resolved as shift
-WARNING: shift/reduce conflict for EQUALS in state 243 resolved as shift
-WARNING: shift/reduce conflict for NOT_ASSIGN in state 243 resolved as shift
-WARNING: shift/reduce conflict for LESSER in state 243 resolved as shift
-WARNING: shift/reduce conflict for GREATER in state 243 resolved as shift
-WARNING: shift/reduce conflict for LESS_EQUALS in state 243 resolved as shift
-WARNING: shift/reduce conflict for MORE_EQUALS in state 243 resolved as shift
-WARNING: shift/reduce conflict for OR in state 243 resolved as shift
-WARNING: shift/reduce conflict for XOR in state 243 resolved as shift
-WARNING: shift/reduce conflict for DIVIDE in state 243 resolved as shift
-WARNING: shift/reduce conflict for MOD in state 243 resolved as shift
-WARNING: shift/reduce conflict for LSHIFT in state 243 resolved as shift
-WARNING: shift/reduce conflict for RSHIFT in state 243 resolved as shift
-WARNING: shift/reduce conflict for PLUS in state 243 resolved as shift
-WARNING: shift/reduce conflict for MINUS in state 243 resolved as shift
-WARNING: shift/reduce conflict for STAR in state 243 resolved as shift
-WARNING: shift/reduce conflict for AND in state 243 resolved as shift
-WARNING: shift/reduce conflict for IDENTIFIER in state 298 resolved as shift
+WARNING: shift/reduce conflict for RPAREN in state 157 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 235 resolved as shift
+WARNING: shift/reduce conflict for LPAREN in state 235 resolved as shift
+WARNING: shift/reduce conflict for TYPECAST in state 235 resolved as shift
+WARNING: shift/reduce conflict for INTEGER in state 235 resolved as shift
+WARNING: shift/reduce conflict for OCTAL in state 235 resolved as shift
+WARNING: shift/reduce conflict for HEX in state 235 resolved as shift
+WARNING: shift/reduce conflict for FLOAT in state 235 resolved as shift
+WARNING: shift/reduce conflict for IMAGINARY in state 235 resolved as shift
+WARNING: shift/reduce conflict for RUNE in state 235 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 235 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_OR in state 242 resolved as shift
+WARNING: shift/reduce conflict for LOGICAL_AND in state 242 resolved as shift
+WARNING: shift/reduce conflict for EQUALS in state 242 resolved as shift
+WARNING: shift/reduce conflict for NOT_ASSIGN in state 242 resolved as shift
+WARNING: shift/reduce conflict for LESSER in state 242 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 242 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUALS in state 242 resolved as shift
+WARNING: shift/reduce conflict for MORE_EQUALS in state 242 resolved as shift
+WARNING: shift/reduce conflict for OR in state 242 resolved as shift
+WARNING: shift/reduce conflict for XOR in state 242 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 242 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 242 resolved as shift
+WARNING: shift/reduce conflict for LSHIFT in state 242 resolved as shift
+WARNING: shift/reduce conflict for RSHIFT in state 242 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 242 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 242 resolved as shift
+WARNING: shift/reduce conflict for STAR in state 242 resolved as shift
+WARNING: shift/reduce conflict for AND in state 242 resolved as shift
+WARNING: shift/reduce conflict for IDENTIFIER in state 297 resolved as shift

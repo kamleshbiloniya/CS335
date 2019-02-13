@@ -954,10 +954,10 @@ def p_import_decl(p):
     p[0] = ["ImportDecl", "import", "(", p[3], ")"]
 
 def p_import_spec_rep(p):
-  ''' ImportSpecRep : ImportSpecRep ImportSpec SEMICOLON
+  ''' ImportSpecRep : ImportSpecRep ImportSpec
             | epsilon '''
-  if len(p) == 4:
-    p[0] = ["ImportSpecRep", p[1], p[2], ";"]
+  if len(p) == 3:
+    p[0] = ["ImportSpecRep", p[1], p[2]]
   else:
     p[0] = ["ImportSpecRep", p[1]]
 
@@ -989,62 +989,6 @@ def p_empty(p):
 
 
 
-
-
-
-
-# def p_start(p):
-#   '''start : expression'''
-#   # p[0] = "<start>" + p[1] + "</start>"
-#   p[0] = ['start', p[1]]
-
-# def p_expression_plus(p):
-#     '''expression : expression PLUS term
-#                   | expression MINUS term'''
-#     if p[2] == '+':
-#         # p[0] = "<expr>" + p[1] + "</expr> + " + p[3]
-#         p[0] = ["expression", p[1], '+', p[3]]
-#     else:
-#         # p[0] = "<expr>" + p[1] + "</expr> - " + p[3]
-#         p[0] = ["expression", p[1], '-', p[3]]
-#         # p[0] = p[1] - p[3]
-# # def p_expression_minus(p):
-# #     'expression : '
-
-# def p_expression_term(p):
-#     'expression : term'
-#     # p[0] = "<term>" + p[1] + "</term>"
-#     p[0] = ["expression", p[1]]
-
-# def p_term_times(p):
-#     'term : term STAR factor'
-#     # p[0] = "<term>" + p[1] + "</term> * " + "<factor>" + p[3] + "</factor>"
-#     p[0] = ["term", p[1], "*", p[3]]
-
-
-
-# # def p_term_div(p):
-# #     'term : term DIVIDE factor'
-# #     p[0] = p[1] / p[3]
-
-# def p_term_factor(p):
-#     'term : factor'
-#     p[0] = ["term", p[1]]
-
-# def p_factor_num(p):
-#     'factor : INTEGER'
-#     # p[0] = str(p[1])
-#     p[0] = ["factor", str(p[1])]
-
-# # def p_factor_expr(p):
-# #     'factor : LPAREN expression RPAREN'
-# #     p[0] = p[2]
-
-
-
-# Error rule for syntax errors
-
-
 def p_error(p):
   print("Syntax error in input!")
   print(p)
@@ -1055,101 +999,7 @@ parser = yacc.yacc()
 
 
 
-# nonTerminals = []
 
-# def toFindNonTerminals(graph):
-#   if type(graph) is list:
-#     nonTerminals.append(graph[0])
-#     for i in range(1,len(graph),1):
-#       toFindNonTerminals(graph[i])
-
-# def printResult(graph, prev, after):
-
-#   word = ""
-
-#   if type(graph) is list:
-
-#     lastFound = 0
-#     for i in range (len(graph)-1,0,-1):
-#       if type(graph[i]) is list:
-#         if word != "":
-#           if lastFound==1:
-#             word = graph[i][0]+ " " + word
-#           else:
-#             lastFound = 1
-#             word =  "<b style='color:red'>" + graph[i][0]+ "</b>" + " " + word
-#         else:
-#           if lastFound == 1:
-#             word = graph[i][0]
-#           else:
-#             lastFound = 1
-#             word = "<b style='color:red'>" + graph[i][0] + "</b>"
-#       else:
-#         if word != "":
-#           word =  graph[i] + " " + word
-#         else:
-#           word = graph[i]
-
-#     # word = '<span style="color:red">' + word + "</span>"
-
-#     if prev != "" and after != "":
-#       final = prev + " " + word + " "+ after
-#     elif prev == "" and after == "":
-#       final = word
-#     elif prev == "":
-#       final = word + " " + after
-#     else :
-#       final = prev + " " +word
-
-#     final = (final.replace(" epsilon", ""))
-#     toFindNT = final.split()
-#     # print toFindNT
-
-
-#     # print lastFound
-#     if lastFound == 0:
-#       for kk in range(len(toFindNT)-1,-1,-1):
-#         if toFindNT[kk] in nonTerminals:
-#           lastFound = 1
-#           toFindNT[kk] = "<b style='color:red'>" + toFindNT[kk] + "</b>"
-#           break
-#     final = ' '.join(toFindNT)
-#     print  (final + "<br/>")
-
-
-
-#     for i in range(len(graph)-1,0,-1):
-#       prevNew = prev
-
-#       for j in range (1,i):
-#         if type(graph[j]) is list:
-#           if prevNew != "":
-#             prevNew += " " + graph[j][0]
-#           else :
-#             prevNew = graph[j][0]
-#         else:
-#           if prevNew != "":
-#             prevNew += " " + graph[j]
-#           else:
-#             prevNew = graph[j]
-#       # print "prev " + prevNew
-#       afterNew = after
-#       # print "after " + afterNew
-#       afterNew = printResult(graph[i],prevNew,afterNew)
-#       # print "afterNew " + afterNew
-#       after = afterNew
-
-
-#     return after
-
-
-
-#   word = graph
-#   # print "after String " + word + after
-
-#   if word != "":
-#     return word+" "+after
-#   return after
 
 decl=""
 count = 1;
@@ -1167,9 +1017,11 @@ def traverse(answer,tree):
     my_count = count
     for i in range(len(tree)-1):
       # for each child we need 'parent->child";"'
-      decl += str(count)+"[label=\""+root + "\"]\n";
-      answer = answer + str(count) + str(" -> ")
-      count+=1;
+      if(i==0):
+	      decl += str(count)+"[label=\""+root + "\"]\n";
+	      answer = answer + str(count) + str(" -> ")
+	      # print(count,root)
+	      count+=1;
       # recursively repeat for each child
       answer = traverse(answer, tree[i+1])
       if(i< len(tree)-2):
@@ -1193,24 +1045,13 @@ try:
   s = data
   print(s)
 except EOFError:
-  print("khatam bc")
+  print("Errorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr!!")
 if not s:
-  print("bas kar")
+  print("Doneeeeeeeeeeeeeeeeeeeeeeeeeeee!!")
 log = logging.getLogger()
 result = parser.parse(s,debug=log)
 
-# toFindNonTerminals(result)
-# print nonTTerminals
 
-# print nonTerminals
-# file_name = file_name.split("/")[-1].split(".")[0] + ".html"
-# sys.stdout = open(file_name, "w+")
-# print ("<!DOCTYPE html>\r\n<html><head>")
-# print ("<b style='color:red'>Start</b><br>")
-
-
-# printResult(result, "" , "")
-# print ("</head></html>")
 print(result)
 
 dot_string = traverse("", result)

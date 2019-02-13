@@ -1,528 +1,610 @@
 INFO:root:PLY: PARSE DEBUG START
 DEBUG:root:
 DEBUG:root:State  : 0
-DEBUG:root:Stack  : . LexToken(PACKAGE,'package',9,21)
+DEBUG:root:Stack  : . LexToken(PACKAGE,'package',17,21)
 DEBUG:root:Action : Shift and goto state 4
 DEBUG:root:
 DEBUG:root:State  : 4
-DEBUG:root:Stack  : PACKAGE . LexToken(IDENTIFIER,'main',9,29)
+DEBUG:root:Stack  : PACKAGE . LexToken(IDENTIFIER,'main',17,29)
 DEBUG:root:Action : Shift and goto state 7
 DEBUG:root:
 DEBUG:root:State  : 7
-DEBUG:root:Stack  : PACKAGE IDENTIFIER . LexToken(SEMICOLON,';',9,33)
+DEBUG:root:Stack  : PACKAGE IDENTIFIER . LexToken(SEMICOLON,';',17,33)
 INFO:root:Action : Reduce rule [PackageName -> IDENTIFIER] with ['main'] and goto state 6
-INFO:root:Result : <list @ 0x7f633951e548> (['PackageName', 'main'])
+INFO:root:Result : <list @ 0x7f2b31daa548> (['PackageName', 'main'])
 DEBUG:root:
 DEBUG:root:State  : 6
 DEBUG:root:Defaulted state 6: Reduce using 254
-DEBUG:root:Stack  : PACKAGE PackageName . LexToken(SEMICOLON,';',9,33)
-INFO:root:Action : Reduce rule [PackageClause -> PACKAGE PackageName] with ['package',<list @ 0x7f633951e548>] and goto state 3
-INFO:root:Result : <list @ 0x7f633951e108> (['PackageClause', 'package', ['PackageNa ...)
+DEBUG:root:Stack  : PACKAGE PackageName . LexToken(SEMICOLON,';',17,33)
+INFO:root:Action : Reduce rule [PackageClause -> PACKAGE PackageName] with ['package',<list @ 0x7f2b31daa548>] and goto state 3
+INFO:root:Result : <list @ 0x7f2b31daa108> (['PackageClause', 'package', ['PackageNa ...)
 DEBUG:root:
 DEBUG:root:State  : 3
-DEBUG:root:Stack  : PackageClause . LexToken(SEMICOLON,';',9,33)
+DEBUG:root:Stack  : PackageClause . LexToken(SEMICOLON,';',17,33)
 DEBUG:root:Action : Shift and goto state 5
 DEBUG:root:
 DEBUG:root:State  : 5
-DEBUG:root:Stack  : PackageClause SEMICOLON . LexToken(IMPORT,'import',10,35)
+DEBUG:root:Stack  : PackageClause SEMICOLON . LexToken(IMPORT,'import',18,35)
 INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 9
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 9
-DEBUG:root:Stack  : PackageClause SEMICOLON epsilon . LexToken(IMPORT,'import',10,35)
+DEBUG:root:Stack  : PackageClause SEMICOLON epsilon . LexToken(IMPORT,'import',18,35)
 INFO:root:Action : Reduce rule [ImportDeclRep -> epsilon] with ['epsilon'] and goto state 8
-INFO:root:Result : <list @ 0x7f63376e6408> (['ImportDeclRep', 'epsilon'])
+INFO:root:Result : <list @ 0x7f2b2ff71408> (['ImportDeclRep', 'epsilon'])
 DEBUG:root:
 DEBUG:root:State  : 8
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep . LexToken(IMPORT,'import',10,35)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep . LexToken(IMPORT,'import',18,35)
 DEBUG:root:Action : Shift and goto state 13
 DEBUG:root:
 DEBUG:root:State  : 13
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT . LexToken(STRING,'fmt',10,42)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT . LexToken(STRING,'fmt',18,42)
 INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 30
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 30
 DEBUG:root:Defaulted state 30: Reduce using 263
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT epsilon . LexToken(STRING,'fmt',10,42)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT epsilon . LexToken(STRING,'fmt',18,42)
 INFO:root:Action : Reduce rule [PackageNameDotOpt -> epsilon] with ['epsilon'] and goto state 27
-INFO:root:Result : <list @ 0x7f6337455708> (['PackageNameDotOpt', 'epsilon'])
+INFO:root:Result : <list @ 0x7f2b2fce1708> (['PackageNameDotOpt', 'epsilon'])
 DEBUG:root:
 DEBUG:root:State  : 27
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt . LexToken(STRING,'fmt',10,42)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt . LexToken(STRING,'fmt',18,42)
 DEBUG:root:Action : Shift and goto state 49
 DEBUG:root:
 DEBUG:root:State  : 49
-DEBUG:root:Defaulted state 49: Reduce using 264
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt STRING . None
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt STRING . LexToken(SEMICOLON,';',18,47)
 INFO:root:Action : Reduce rule [ImportPath -> STRING] with ['fmt'] and goto state 48
-INFO:root:Result : <list @ 0x7f63378a9448> (['ImportPath', 'fmt'])
+INFO:root:Result : <list @ 0x7f2b30135448> (['ImportPath', 'fmt'])
 DEBUG:root:
 DEBUG:root:State  : 48
-DEBUG:root:Defaulted state 48: Reduce using 260
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt ImportPath . None
-INFO:root:Action : Reduce rule [ImportSpec -> PackageNameDotOpt ImportPath] with [<list @ 0x7f6337455708>,<list @ 0x7f63378a9448>] and goto state 25
-INFO:root:Result : <list @ 0x7f63376e6588> (['ImportSpec', ['PackageNameDotOpt', 'ep ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT PackageNameDotOpt ImportPath . LexToken(SEMICOLON,';',18,47)
+INFO:root:Action : Reduce rule [ImportSpec -> PackageNameDotOpt ImportPath] with [<list @ 0x7f2b2fce1708>,<list @ 0x7f2b30135448>] and goto state 25
+INFO:root:Result : <list @ 0x7f2b2ff71588> (['ImportSpec', ['PackageNameDotOpt', 'ep ...)
 DEBUG:root:
 DEBUG:root:State  : 25
 DEBUG:root:Defaulted state 25: Reduce using 256
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT ImportSpec . None
-INFO:root:Action : Reduce rule [ImportDecl -> IMPORT ImportSpec] with ['import',<list @ 0x7f63376e6588>] and goto state 11
-INFO:root:Result : <list @ 0x7f63374555c8> (['ImportDecl', 'import', ['ImportSpec',  ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep IMPORT ImportSpec . LexToken(SEMICOLON,';',18,47)
+INFO:root:Action : Reduce rule [ImportDecl -> IMPORT ImportSpec] with ['import',<list @ 0x7f2b2ff71588>] and goto state 11
+INFO:root:Result : <list @ 0x7f2b2fce15c8> (['ImportDecl', 'import', ['ImportSpec',  ...)
 DEBUG:root:
 DEBUG:root:State  : 11
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep ImportDecl . LexToken(SEMICOLON,';',10,47)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep ImportDecl . LexToken(SEMICOLON,';',18,47)
 DEBUG:root:Action : Shift and goto state 24
 DEBUG:root:
 DEBUG:root:State  : 24
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep ImportDecl SEMICOLON . LexToken(FUNC,'func',11,49)
-INFO:root:Action : Reduce rule [ImportDeclRep -> ImportDeclRep ImportDecl SEMICOLON] with [<list @ 0x7f63376e6408>,<list @ 0x7f63374555c8>,';'] and goto state 8
-INFO:root:Result : <list @ 0x7f63376e6548> (['ImportDeclRep', ['ImportDeclRep', 'eps ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep ImportDecl SEMICOLON . LexToken(TYPE,'type',20,50)
+INFO:root:Action : Reduce rule [ImportDeclRep -> ImportDeclRep ImportDecl SEMICOLON] with [<list @ 0x7f2b2ff71408>,<list @ 0x7f2b2fce15c8>,';'] and goto state 8
+INFO:root:Result : <list @ 0x7f2b2ff71548> (['ImportDeclRep', ['ImportDeclRep', 'eps ...)
 DEBUG:root:
 DEBUG:root:State  : 8
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep . LexToken(FUNC,'func',11,49)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep . LexToken(TYPE,'type',20,50)
 INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 12
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 12
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep epsilon . LexToken(FUNC,'func',11,49)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep epsilon . LexToken(TYPE,'type',20,50)
 INFO:root:Action : Reduce rule [TopLevelDeclRep -> epsilon] with ['epsilon'] and goto state 10
-INFO:root:Result : <list @ 0x7f63376e6908> (['TopLevelDeclRep', 'epsilon'])
+INFO:root:Result : <list @ 0x7f2b2ff71908> (['TopLevelDeclRep', 'epsilon'])
 DEBUG:root:
 DEBUG:root:State  : 10
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep . LexToken(FUNC,'func',11,49)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep . LexToken(TYPE,'type',20,50)
+DEBUG:root:Action : Shift and goto state 22
+DEBUG:root:
+DEBUG:root:State  : 22
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE . LexToken(IDENTIFIER,'T',20,55)
+DEBUG:root:Action : Shift and goto state 42
+DEBUG:root:
+DEBUG:root:State  : 42
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER . LexToken(STRUCT,'struct',20,57)
+DEBUG:root:Action : Shift and goto state 78
+DEBUG:root:
+DEBUG:root:State  : 78
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER STRUCT . LexToken(LCURL,'{',20,64)
+DEBUG:root:Action : Shift and goto state 140
+DEBUG:root:
+DEBUG:root:State  : 140
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER STRUCT LCURL . LexToken(RCURL,'}',23,88)
+INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 198
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
+DEBUG:root:
+DEBUG:root:State  : 198
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER STRUCT LCURL epsilon . LexToken(RCURL,'}',23,88)
+INFO:root:Action : Reduce rule [FieldDeclRep -> epsilon] with ['epsilon'] and goto state 197
+INFO:root:Result : <list @ 0x7f2b2ff718c8> (['FieldDeclRep', 'epsilon'])
+DEBUG:root:
+DEBUG:root:State  : 197
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER STRUCT LCURL FieldDeclRep . LexToken(RCURL,'}',23,88)
+DEBUG:root:Action : Shift and goto state 253
+DEBUG:root:
+DEBUG:root:State  : 253
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER STRUCT LCURL FieldDeclRep RCURL . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [StructType -> STRUCT LCURL FieldDeclRep RCURL] with ['struct','{',<list @ 0x7f2b2ff718c8>,'}'] and goto state 66
+INFO:root:Result : <list @ 0x7f2b2ff71708> (['StructType', 'struct', '{', ['FieldDec ...)
+DEBUG:root:
+DEBUG:root:State  : 66
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER StructType . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [TypeLit -> StructType] with [<list @ 0x7f2b2ff71708>] and goto state 61
+INFO:root:Result : <list @ 0x7f2b2ff71ac8> (['TypeLit', ['StructType', 'struct', '{' ...)
+DEBUG:root:
+DEBUG:root:State  : 61
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER TypeLit . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [Type -> TypeLit] with [<list @ 0x7f2b2ff71ac8>] and goto state 85
+INFO:root:Result : <list @ 0x7f2b2ff71748> (['Type', ['TypeLit', ['StructType', 'str ...)
+DEBUG:root:
+DEBUG:root:State  : 85
+DEBUG:root:Defaulted state 85: Reduce using 76
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE IDENTIFIER Type . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [TypeDef -> IDENTIFIER Type] with ['T',<list @ 0x7f2b2ff71748>] and goto state 41
+INFO:root:Result : <list @ 0x7f2b2ff71a88> (['TypeDef', 'T', ['Type', ['TypeLit', [' ...)
+DEBUG:root:
+DEBUG:root:State  : 41
+DEBUG:root:Defaulted state 41: Reduce using 74
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE TypeDef . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [TypeSpec -> TypeDef] with [<list @ 0x7f2b2ff71a88>] and goto state 38
+INFO:root:Result : <list @ 0x7f2b2ff71c48> (['TypeSpec', ['TypeDef', 'T', ['Type', [ ...)
+DEBUG:root:
+DEBUG:root:State  : 38
+DEBUG:root:Defaulted state 38: Reduce using 69
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TYPE TypeSpec . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [TypeDecl -> TYPE TypeSpec] with ['type',<list @ 0x7f2b2ff71c48>] and goto state 18
+INFO:root:Result : <list @ 0x7f2b2ff71c08> (['TypeDecl', 'type', ['TypeSpec', ['Type ...)
+DEBUG:root:
+DEBUG:root:State  : 18
+DEBUG:root:Defaulted state 18: Reduce using 52
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TypeDecl . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [Declaration -> TypeDecl] with [<list @ 0x7f2b2ff71c08>] and goto state 15
+INFO:root:Result : <list @ 0x7f2b2ff71d88> (['Declaration', ['TypeDecl', 'type', ['T ...)
+DEBUG:root:
+DEBUG:root:State  : 15
+DEBUG:root:Defaulted state 15: Reduce using 54
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep Declaration . LexToken(SEMICOLON,';',23,89)
+INFO:root:Action : Reduce rule [TopLevelDecl -> Declaration] with [<list @ 0x7f2b2ff71d88>] and goto state 14
+INFO:root:Result : <list @ 0x7f2b2ff71d48> (['TopLevelDecl', ['Declaration', ['TypeD ...)
+DEBUG:root:
+DEBUG:root:State  : 14
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TopLevelDecl . LexToken(SEMICOLON,';',23,89)
+DEBUG:root:Action : Shift and goto state 31
+DEBUG:root:
+DEBUG:root:State  : 31
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TopLevelDecl SEMICOLON . LexToken(FUNC,'func',25,92)
+INFO:root:Action : Reduce rule [TopLevelDeclRep -> TopLevelDeclRep TopLevelDecl SEMICOLON] with [<list @ 0x7f2b2ff71908>,<list @ 0x7f2b2ff71d48>,';'] and goto state 10
+INFO:root:Result : <list @ 0x7f2b2ff71f08> (['TopLevelDeclRep', ['TopLevelDeclRep',  ...)
+DEBUG:root:
+DEBUG:root:State  : 10
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep . LexToken(FUNC,'func',25,92)
 DEBUG:root:Action : Shift and goto state 20
 DEBUG:root:
 DEBUG:root:State  : 20
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC . LexToken(IDENTIFIER,'main',11,54)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC . LexToken(IDENTIFIER,'main',25,97)
 DEBUG:root:Action : Shift and goto state 33
 DEBUG:root:
 DEBUG:root:State  : 33
 DEBUG:root:Defaulted state 33: Reduce using 88
 DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC IDENTIFIER . None
 INFO:root:Action : Reduce rule [FunctionName -> IDENTIFIER] with ['main'] and goto state 32
-INFO:root:Result : <list @ 0x7f63376e6708> (['FunctionName', 'main'])
+INFO:root:Result : <list @ 0x7f2b2ff730c8> (['FunctionName', 'main'])
 DEBUG:root:
 DEBUG:root:State  : 32
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName . LexToken(LPAREN,'(',11,58)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName . LexToken(LPAREN,'(',25,101)
 DEBUG:root:Action : Shift and goto state 53
 DEBUG:root:
 DEBUG:root:State  : 53
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN . LexToken(RPAREN,')',11,59)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN . LexToken(RPAREN,')',25,102)
 INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 103
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 103
 DEBUG:root:Defaulted state 103: Reduce using 39
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN epsilon . LexToken(RPAREN,')',11,59)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN epsilon . LexToken(RPAREN,')',25,102)
 INFO:root:Action : Reduce rule [ParameterListOpt -> epsilon] with ['epsilon'] and goto state 101
-INFO:root:Result : <list @ 0x7f63376e68c8> (['ParameterListOpt', 'epsilon'])
+INFO:root:Result : <list @ 0x7f2b2ff73088> (['ParameterListOpt', 'epsilon'])
 DEBUG:root:
 DEBUG:root:State  : 101
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN ParameterListOpt . LexToken(RPAREN,')',11,59)
-DEBUG:root:Action : Shift and goto state 159
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN ParameterListOpt . LexToken(RPAREN,')',25,102)
+DEBUG:root:Action : Shift and goto state 158
 DEBUG:root:
-DEBUG:root:State  : 159
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN ParameterListOpt RPAREN . LexToken(LCURL,'{',11,61)
-INFO:root:Action : Reduce rule [Parameters -> LPAREN ParameterListOpt RPAREN] with ['(',<list @ 0x7f63376e68c8>,')'] and goto state 52
-INFO:root:Result : <list @ 0x7f63376e6748> (['Parameters', '(', ['ParameterListOpt', ...)
+DEBUG:root:State  : 158
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName LPAREN ParameterListOpt RPAREN . LexToken(LCURL,'{',25,104)
+INFO:root:Action : Reduce rule [Parameters -> LPAREN ParameterListOpt RPAREN] with ['(',<list @ 0x7f2b2ff73088>,')'] and goto state 52
+INFO:root:Result : <list @ 0x7f2b2ff71ec8> (['Parameters', '(', ['ParameterListOpt', ...)
 DEBUG:root:
 DEBUG:root:State  : 52
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters . LexToken(LCURL,'{',11,61)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters . LexToken(LCURL,'{',25,104)
 INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 98
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 98
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters epsilon . LexToken(LCURL,'{',11,61)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters epsilon . LexToken(LCURL,'{',25,104)
 INFO:root:Action : Reduce rule [ResultOpt -> epsilon] with ['epsilon'] and goto state 96
-INFO:root:Result : <list @ 0x7f63376e6c48> (['ResultOpt', 'epsilon'])
+INFO:root:Result : <list @ 0x7f2b2ff733c8> (['ResultOpt', 'epsilon'])
 DEBUG:root:
 DEBUG:root:State  : 96
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters ResultOpt . LexToken(LCURL,'{',11,61)
-INFO:root:Action : Reduce rule [Signature -> Parameters ResultOpt] with [<list @ 0x7f63376e6748>,<list @ 0x7f63376e6c48>] and goto state 51
-INFO:root:Result : <list @ 0x7f63376e6a88> (['Signature', ['Parameters', '(', ['Para ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Parameters ResultOpt . LexToken(LCURL,'{',25,104)
+INFO:root:Action : Reduce rule [Signature -> Parameters ResultOpt] with [<list @ 0x7f2b2ff71ec8>,<list @ 0x7f2b2ff733c8>] and goto state 51
+INFO:root:Result : <list @ 0x7f2b2ff73208> (['Signature', ['Parameters', '(', ['Para ...)
 DEBUG:root:
 DEBUG:root:State  : 51
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature . LexToken(LCURL,'{',11,61)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature . LexToken(LCURL,'{',25,104)
 DEBUG:root:Action : Shift and goto state 94
 DEBUG:root:
 DEBUG:root:State  : 94
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL . LexToken(IDENTIFIER,'X',12,67)
-INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 157
-INFO:root:Result : <str @ 0x7f633967ba08> ('epsilon')
-DEBUG:root:
-DEBUG:root:State  : 157
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL epsilon . LexToken(IDENTIFIER,'X',12,67)
-INFO:root:Action : Reduce rule [StatementRep -> epsilon] with ['epsilon'] and goto state 156
-INFO:root:Result : <list @ 0x7f63376e6c08> (['StatementRep', 'epsilon'])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL . LexToken(IDENTIFIER,'X',28,124)
+INFO:root:Action : Reduce rule [epsilon -> <empty>] with [] and goto state 156
+INFO:root:Result : <str @ 0x7f2b31f07a08> ('epsilon')
 DEBUG:root:
 DEBUG:root:State  : 156
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(IDENTIFIER,'X',12,67)
-DEBUG:root:Action : Shift and goto state 234
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL epsilon . LexToken(IDENTIFIER,'X',28,124)
+INFO:root:Action : Reduce rule [StatementRep -> epsilon] with ['epsilon'] and goto state 155
+INFO:root:Result : <list @ 0x7f2b2ff73388> (['StatementRep', 'epsilon'])
 DEBUG:root:
-DEBUG:root:State  : 234
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER . LexToken(QUICK_ASSIGN,':=',12,68)
-DEBUG:root:Action : Shift and goto state 283
+DEBUG:root:State  : 155
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(IDENTIFIER,'X',28,124)
+DEBUG:root:Action : Shift and goto state 233
 DEBUG:root:
-DEBUG:root:State  : 283
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN . LexToken(INTEGER,2,12,71)
+DEBUG:root:State  : 233
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER . LexToken(QUICK_ASSIGN,':=',28,125)
+DEBUG:root:Action : Shift and goto state 282
+DEBUG:root:
+DEBUG:root:State  : 282
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN . LexToken(INTEGER,2,28,128)
 DEBUG:root:Action : Shift and goto state 133
 DEBUG:root:
 DEBUG:root:State  : 133
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN INTEGER . LexToken(STAR,'*',12,72)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN INTEGER . LexToken(STAR,'*',28,129)
 INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [2] and goto state 131
-INFO:root:Result : <list @ 0x7f63376e6ac8> (['BasicLit', '2'])
+INFO:root:Result : <list @ 0x7f2b2ff73248> (['BasicLit', '2'])
 DEBUG:root:
 DEBUG:root:State  : 131
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN BasicLit . LexToken(STAR,'*',12,72)
-INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f63376e6ac8>] and goto state 127
-INFO:root:Result : <list @ 0x7f63376e6d48> (['Literal', ['BasicLit', '2']])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN BasicLit . LexToken(STAR,'*',28,129)
+INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f2b2ff73248>] and goto state 127
+INFO:root:Result : <list @ 0x7f2b2ff73548> (['Literal', ['BasicLit', '2']])
 DEBUG:root:
 DEBUG:root:State  : 127
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Literal . LexToken(STAR,'*',12,72)
-INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f63376e6d48>] and goto state 121
-INFO:root:Result : <list @ 0x7f63376e6d88> (['Operand', ['Literal', ['BasicLit', '2' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Literal . LexToken(STAR,'*',28,129)
+INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f2b2ff73548>] and goto state 121
+INFO:root:Result : <list @ 0x7f2b2ff73588> (['Operand', ['Literal', ['BasicLit', '2' ...)
 DEBUG:root:
 DEBUG:root:State  : 121
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Operand . LexToken(STAR,'*',12,72)
-INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f63376e6d88>] and goto state 118
-INFO:root:Result : <list @ 0x7f63376e6f08> (['PrimaryExpr', ['Operand', ['Literal',  ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Operand . LexToken(STAR,'*',28,129)
+INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f2b2ff73588>] and goto state 118
+INFO:root:Result : <list @ 0x7f2b2ff736c8> (['PrimaryExpr', ['Operand', ['Literal',  ...)
 DEBUG:root:
 DEBUG:root:State  : 118
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN PrimaryExpr . LexToken(STAR,'*',12,72)
-INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f63376e6f08>] and goto state 117
-INFO:root:Result : <list @ 0x7f63376e6ec8> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN PrimaryExpr . LexToken(STAR,'*',28,129)
+INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f2b2ff736c8>] and goto state 117
+INFO:root:Result : <list @ 0x7f2b2ff73688> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
 DEBUG:root:
 DEBUG:root:State  : 117
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN UnaryExpr . LexToken(STAR,'*',12,72)
-INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f63376e6ec8>] and goto state 317
-INFO:root:Result : <list @ 0x7f63376e80c8> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN UnaryExpr . LexToken(STAR,'*',28,129)
+INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f2b2ff73688>] and goto state 316
+INFO:root:Result : <list @ 0x7f2b2ff73808> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
 DEBUG:root:
-DEBUG:root:State  : 317
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(STAR,'*',12,72)
+DEBUG:root:State  : 316
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(STAR,'*',28,129)
 DEBUG:root:Action : Shift and goto state 125
 DEBUG:root:
 DEBUG:root:State  : 125
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression STAR . LexToken(INTEGER,3,12,73)
-INFO:root:Action : Reduce rule [UnaryOp -> STAR] with ['*'] and goto state 179
-INFO:root:Result : <list @ 0x7f63376e8088> (['UnaryOp', '*'])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression STAR . LexToken(INTEGER,3,28,130)
+INFO:root:Action : Reduce rule [UnaryOp -> STAR] with ['*'] and goto state 178
+INFO:root:Result : <list @ 0x7f2b2ff737c8> (['UnaryOp', '*'])
 DEBUG:root:
-DEBUG:root:State  : 179
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression UnaryOp . LexToken(INTEGER,3,12,73)
-INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f63376e8088>] and goto state 172
-INFO:root:Result : <list @ 0x7f63376e8208> (['AddMulOp', ['UnaryOp', '*']])
+DEBUG:root:State  : 178
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression UnaryOp . LexToken(INTEGER,3,28,130)
+INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f2b2ff737c8>] and goto state 171
+INFO:root:Result : <list @ 0x7f2b2ff73908> (['AddMulOp', ['UnaryOp', '*']])
 DEBUG:root:
-DEBUG:root:State  : 172
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression AddMulOp . LexToken(INTEGER,3,12,73)
-INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f63376e8208>] and goto state 168
-INFO:root:Result : <list @ 0x7f63376e8248> (['BinaryOp', ['AddMulOp', ['UnaryOp', '* ...)
+DEBUG:root:State  : 171
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression AddMulOp . LexToken(INTEGER,3,28,130)
+INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f2b2ff73908>] and goto state 167
+INFO:root:Result : <list @ 0x7f2b2ff73948> (['BinaryOp', ['AddMulOp', ['UnaryOp', '* ...)
 DEBUG:root:
-DEBUG:root:State  : 168
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp . LexToken(INTEGER,3,12,73)
+DEBUG:root:State  : 167
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp . LexToken(INTEGER,3,28,130)
 DEBUG:root:Action : Shift and goto state 133
 DEBUG:root:
 DEBUG:root:State  : 133
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp INTEGER . LexToken(PLUS,'+',12,75)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp INTEGER . LexToken(PLUS,'+',28,132)
 INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [3] and goto state 131
-INFO:root:Result : <list @ 0x7f63376e83c8> (['BasicLit', '3'])
+INFO:root:Result : <list @ 0x7f2b2ff73ac8> (['BasicLit', '3'])
 DEBUG:root:
 DEBUG:root:State  : 131
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp BasicLit . LexToken(PLUS,'+',12,75)
-INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f63376e83c8>] and goto state 127
-INFO:root:Result : <list @ 0x7f63376e8588> (['Literal', ['BasicLit', '3']])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp BasicLit . LexToken(PLUS,'+',28,132)
+INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f2b2ff73ac8>] and goto state 127
+INFO:root:Result : <list @ 0x7f2b2ff73c08> (['Literal', ['BasicLit', '3']])
 DEBUG:root:
 DEBUG:root:State  : 127
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Literal . LexToken(PLUS,'+',12,75)
-INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f63376e8588>] and goto state 121
-INFO:root:Result : <list @ 0x7f63376e8388> (['Operand', ['Literal', ['BasicLit', '3' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Literal . LexToken(PLUS,'+',28,132)
+INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f2b2ff73c08>] and goto state 121
+INFO:root:Result : <list @ 0x7f2b2ff73a88> (['Operand', ['Literal', ['BasicLit', '3' ...)
 DEBUG:root:
 DEBUG:root:State  : 121
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Operand . LexToken(PLUS,'+',12,75)
-INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f63376e8388>] and goto state 118
-INFO:root:Result : <list @ 0x7f63376e8548> (['PrimaryExpr', ['Operand', ['Literal',  ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Operand . LexToken(PLUS,'+',28,132)
+INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f2b2ff73a88>] and goto state 118
+INFO:root:Result : <list @ 0x7f2b2ff73bc8> (['PrimaryExpr', ['Operand', ['Literal',  ...)
 DEBUG:root:
 DEBUG:root:State  : 118
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp PrimaryExpr . LexToken(PLUS,'+',12,75)
-INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f63376e8548>] and goto state 117
-INFO:root:Result : <list @ 0x7f63376e86c8> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp PrimaryExpr . LexToken(PLUS,'+',28,132)
+INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f2b2ff73bc8>] and goto state 117
+INFO:root:Result : <list @ 0x7f2b2ff73d48> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
 DEBUG:root:
 DEBUG:root:State  : 117
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp UnaryExpr . LexToken(PLUS,'+',12,75)
-INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f63376e86c8>] and goto state 243
-INFO:root:Result : <list @ 0x7f63376e8688> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp UnaryExpr . LexToken(PLUS,'+',28,132)
+INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f2b2ff73d48>] and goto state 242
+INFO:root:Result : <list @ 0x7f2b2ff73d08> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
 DEBUG:root:
-DEBUG:root:State  : 243
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression . LexToken(PLUS,'+',12,75)
+DEBUG:root:State  : 242
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression . LexToken(PLUS,'+',28,132)
 DEBUG:root:Action : Shift and goto state 123
 DEBUG:root:
 DEBUG:root:State  : 123
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression PLUS . LexToken(INTEGER,5,12,77)
-INFO:root:Action : Reduce rule [UnaryOp -> PLUS] with ['+'] and goto state 179
-INFO:root:Result : <list @ 0x7f63376e8808> (['UnaryOp', '+'])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression PLUS . LexToken(INTEGER,5,28,134)
+INFO:root:Action : Reduce rule [UnaryOp -> PLUS] with ['+'] and goto state 178
+INFO:root:Result : <list @ 0x7f2b2ff73ec8> (['UnaryOp', '+'])
 DEBUG:root:
-DEBUG:root:State  : 179
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression UnaryOp . LexToken(INTEGER,5,12,77)
-INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f63376e8808>] and goto state 172
-INFO:root:Result : <list @ 0x7f63376e8948> (['AddMulOp', ['UnaryOp', '+']])
+DEBUG:root:State  : 178
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression UnaryOp . LexToken(INTEGER,5,28,134)
+INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f2b2ff73ec8>] and goto state 171
+INFO:root:Result : <list @ 0x7f2b2ff75088> (['AddMulOp', ['UnaryOp', '+']])
 DEBUG:root:
-DEBUG:root:State  : 172
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression AddMulOp . LexToken(INTEGER,5,12,77)
-INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f63376e8948>] and goto state 168
-INFO:root:Result : <list @ 0x7f63376e87c8> (['BinaryOp', ['AddMulOp', ['UnaryOp', '+ ...)
+DEBUG:root:State  : 171
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression AddMulOp . LexToken(INTEGER,5,28,134)
+INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f2b2ff75088>] and goto state 167
+INFO:root:Result : <list @ 0x7f2b2ff73e88> (['BinaryOp', ['AddMulOp', ['UnaryOp', '+ ...)
 DEBUG:root:
-DEBUG:root:State  : 168
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp . LexToken(INTEGER,5,12,77)
+DEBUG:root:State  : 167
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp . LexToken(INTEGER,5,28,134)
 DEBUG:root:Action : Shift and goto state 133
 DEBUG:root:
 DEBUG:root:State  : 133
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp INTEGER . LexToken(STAR,'*',12,78)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp INTEGER . LexToken(STAR,'*',28,135)
 INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [5] and goto state 131
-INFO:root:Result : <list @ 0x7f63376e8908> (['BasicLit', '5'])
+INFO:root:Result : <list @ 0x7f2b2ff75048> (['BasicLit', '5'])
 DEBUG:root:
 DEBUG:root:State  : 131
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp BasicLit . LexToken(STAR,'*',12,78)
-INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f63376e8908>] and goto state 127
-INFO:root:Result : <list @ 0x7f63376e8a88> (['Literal', ['BasicLit', '5']])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp BasicLit . LexToken(STAR,'*',28,135)
+INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f2b2ff75048>] and goto state 127
+INFO:root:Result : <list @ 0x7f2b2ff751c8> (['Literal', ['BasicLit', '5']])
 DEBUG:root:
 DEBUG:root:State  : 127
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Literal . LexToken(STAR,'*',12,78)
-INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f63376e8a88>] and goto state 121
-INFO:root:Result : <list @ 0x7f63376e8ac8> (['Operand', ['Literal', ['BasicLit', '5' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Literal . LexToken(STAR,'*',28,135)
+INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f2b2ff751c8>] and goto state 121
+INFO:root:Result : <list @ 0x7f2b2ff75208> (['Operand', ['Literal', ['BasicLit', '5' ...)
 DEBUG:root:
 DEBUG:root:State  : 121
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Operand . LexToken(STAR,'*',12,78)
-INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f63376e8ac8>] and goto state 118
-INFO:root:Result : <list @ 0x7f63376e8c08> (['PrimaryExpr', ['Operand', ['Literal',  ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Operand . LexToken(STAR,'*',28,135)
+INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f2b2ff75208>] and goto state 118
+INFO:root:Result : <list @ 0x7f2b2ff75348> (['PrimaryExpr', ['Operand', ['Literal',  ...)
 DEBUG:root:
 DEBUG:root:State  : 118
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp PrimaryExpr . LexToken(STAR,'*',12,78)
-INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f63376e8c08>] and goto state 117
-INFO:root:Result : <list @ 0x7f63376e8bc8> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp PrimaryExpr . LexToken(STAR,'*',28,135)
+INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f2b2ff75348>] and goto state 117
+INFO:root:Result : <list @ 0x7f2b2ff75308> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
 DEBUG:root:
 DEBUG:root:State  : 117
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp UnaryExpr . LexToken(STAR,'*',12,78)
-INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f63376e8bc8>] and goto state 243
-INFO:root:Result : <list @ 0x7f63376e8d48> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp UnaryExpr . LexToken(STAR,'*',28,135)
+INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f2b2ff75308>] and goto state 242
+INFO:root:Result : <list @ 0x7f2b2ff75488> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
 DEBUG:root:
-DEBUG:root:State  : 243
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression . LexToken(STAR,'*',12,78)
+DEBUG:root:State  : 242
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression . LexToken(STAR,'*',28,135)
 DEBUG:root:Action : Shift and goto state 125
 DEBUG:root:
 DEBUG:root:State  : 125
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression STAR . LexToken(INTEGER,7,12,79)
-INFO:root:Action : Reduce rule [UnaryOp -> STAR] with ['*'] and goto state 179
-INFO:root:Result : <list @ 0x7f63376e8d08> (['UnaryOp', '*'])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression STAR . LexToken(INTEGER,7,28,136)
+INFO:root:Action : Reduce rule [UnaryOp -> STAR] with ['*'] and goto state 178
+INFO:root:Result : <list @ 0x7f2b2ff75448> (['UnaryOp', '*'])
 DEBUG:root:
-DEBUG:root:State  : 179
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression UnaryOp . LexToken(INTEGER,7,12,79)
-INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f63376e8d08>] and goto state 172
-INFO:root:Result : <list @ 0x7f63376e8e88> (['AddMulOp', ['UnaryOp', '*']])
+DEBUG:root:State  : 178
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression UnaryOp . LexToken(INTEGER,7,28,136)
+INFO:root:Action : Reduce rule [AddMulOp -> UnaryOp] with [<list @ 0x7f2b2ff75448>] and goto state 171
+INFO:root:Result : <list @ 0x7f2b2ff75588> (['AddMulOp', ['UnaryOp', '*']])
 DEBUG:root:
-DEBUG:root:State  : 172
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression AddMulOp . LexToken(INTEGER,7,12,79)
-INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f63376e8e88>] and goto state 168
-INFO:root:Result : <list @ 0x7f63376e8ec8> (['BinaryOp', ['AddMulOp', ['UnaryOp', '* ...)
+DEBUG:root:State  : 171
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression AddMulOp . LexToken(INTEGER,7,28,136)
+INFO:root:Action : Reduce rule [BinaryOp -> AddMulOp] with [<list @ 0x7f2b2ff75588>] and goto state 167
+INFO:root:Result : <list @ 0x7f2b2ff755c8> (['BinaryOp', ['AddMulOp', ['UnaryOp', '* ...)
 DEBUG:root:
-DEBUG:root:State  : 168
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp . LexToken(INTEGER,7,12,79)
+DEBUG:root:State  : 167
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp . LexToken(INTEGER,7,28,136)
 DEBUG:root:Action : Shift and goto state 133
 DEBUG:root:
 DEBUG:root:State  : 133
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp INTEGER . LexToken(SEMICOLON,';',12,80)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp INTEGER . LexToken(SEMICOLON,';',28,137)
 INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [7] and goto state 131
-INFO:root:Result : <list @ 0x7f63376ea088> (['BasicLit', '7'])
+INFO:root:Result : <list @ 0x7f2b2ff75748> (['BasicLit', '7'])
 DEBUG:root:
 DEBUG:root:State  : 131
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp BasicLit . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f63376ea088>] and goto state 127
-INFO:root:Result : <list @ 0x7f63376ea208> (['Literal', ['BasicLit', '7']])
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp BasicLit . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f2b2ff75748>] and goto state 127
+INFO:root:Result : <list @ 0x7f2b2ff776c8> (['Literal', ['BasicLit', '7']])
 DEBUG:root:
 DEBUG:root:State  : 127
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Literal . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f63376ea208>] and goto state 121
-INFO:root:Result : <list @ 0x7f63376ea048> (['Operand', ['Literal', ['BasicLit', '7' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Literal . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f2b2ff776c8>] and goto state 121
+INFO:root:Result : <list @ 0x7f2b2ff77688> (['Operand', ['Literal', ['BasicLit', '7' ...)
 DEBUG:root:
 DEBUG:root:State  : 121
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Operand . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f63376ea048>] and goto state 118
-INFO:root:Result : <list @ 0x7f63376ea1c8> (['PrimaryExpr', ['Operand', ['Literal',  ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Operand . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f2b2ff77688>] and goto state 118
+INFO:root:Result : <list @ 0x7f2b2ff77708> (['PrimaryExpr', ['Operand', ['Literal',  ...)
 DEBUG:root:
 DEBUG:root:State  : 118
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp PrimaryExpr . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f63376ea1c8>] and goto state 117
-INFO:root:Result : <list @ 0x7f63376ea348> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp PrimaryExpr . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f2b2ff77708>] and goto state 117
+INFO:root:Result : <list @ 0x7f2b2ff77908> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
 DEBUG:root:
 DEBUG:root:State  : 117
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp UnaryExpr . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f63376ea348>] and goto state 243
-INFO:root:Result : <list @ 0x7f63376ea308> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp UnaryExpr . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f2b2ff77908>] and goto state 242
+INFO:root:Result : <list @ 0x7f2b2ff77888> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
 DEBUG:root:
-DEBUG:root:State  : 243
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Expression . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f63376e8d48>,<list @ 0x7f63376e8ec8>,<list @ 0x7f63376ea308>] and goto state 243
-INFO:root:Result : <list @ 0x7f63376ea488> (['Expression', ['Expression', ['UnaryExp ...)
+DEBUG:root:State  : 242
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression BinaryOp Expression . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f2b2ff75488>,<list @ 0x7f2b2ff755c8>,<list @ 0x7f2b2ff77888>] and goto state 242
+INFO:root:Result : <list @ 0x7f2b2ff77748> (['Expression', ['Expression', ['UnaryExp ...)
 DEBUG:root:
-DEBUG:root:State  : 243
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f63376e8688>,<list @ 0x7f63376e87c8>,<list @ 0x7f63376ea488>] and goto state 243
-INFO:root:Result : <list @ 0x7f63376ea448> (['Expression', ['Expression', ['UnaryExp ...)
+DEBUG:root:State  : 242
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression BinaryOp Expression . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f2b2ff73d08>,<list @ 0x7f2b2ff73e88>,<list @ 0x7f2b2ff77748>] and goto state 242
+INFO:root:Result : <list @ 0x7f2b2fcf5788> (['Expression', ['Expression', ['UnaryExp ...)
 DEBUG:root:
-DEBUG:root:State  : 243
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f63376e80c8>,<list @ 0x7f63376e8248>,<list @ 0x7f63376ea448>] and goto state 317
-INFO:root:Result : <list @ 0x7f63376ea5c8> (['Expression', ['Expression', ['UnaryExp ...)
+DEBUG:root:State  : 242
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression BinaryOp Expression . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Expression -> Expression BinaryOp Expression] with [<list @ 0x7f2b2ff73808>,<list @ 0x7f2b2ff73948>,<list @ 0x7f2b2fcf5788>] and goto state 316
+INFO:root:Result : <list @ 0x7f2b2fcf57c8> (['Expression', ['Expression', ['UnaryExp ...)
 DEBUG:root:
-DEBUG:root:State  : 317
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression] with ['X',':=',<list @ 0x7f63376ea5c8>] and goto state 224
-INFO:root:Result : <list @ 0x7f63376ea588> (['ShortVarDecl', 'X', ':=', ['Expression ...)
+DEBUG:root:State  : 316
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression] with ['X',':=',<list @ 0x7f2b2fcf57c8>] and goto state 223
+INFO:root:Result : <list @ 0x7f2b2fcf5808> (['ShortVarDecl', 'X', ':=', ['Expression ...)
 DEBUG:root:
-DEBUG:root:State  : 224
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep ShortVarDecl . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [SimpleStmt -> ShortVarDecl] with [<list @ 0x7f63376ea588>] and goto state 210
-INFO:root:Result : <list @ 0x7f63376ea748> (['SimpleStmt', ['ShortVarDecl', 'X', ':= ...)
+DEBUG:root:State  : 223
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep ShortVarDecl . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [SimpleStmt -> ShortVarDecl] with [<list @ 0x7f2b2fcf5808>] and goto state 209
+INFO:root:Result : <list @ 0x7f2b2fcf5848> (['SimpleStmt', ['ShortVarDecl', 'X', ':= ...)
 DEBUG:root:
-DEBUG:root:State  : 210
-DEBUG:root:Defaulted state 210: Reduce using 170
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep SimpleStmt . LexToken(SEMICOLON,';',12,80)
-INFO:root:Action : Reduce rule [Statement -> SimpleStmt] with [<list @ 0x7f63376ea748>] and goto state 207
-INFO:root:Result : <list @ 0x7f63376ec688> (['Statement', ['SimpleStmt', ['ShortVarD ...)
-DEBUG:root:
-DEBUG:root:State  : 207
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement . LexToken(SEMICOLON,';',12,80)
-DEBUG:root:Action : Shift and goto state 258
-DEBUG:root:
-DEBUG:root:State  : 258
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement SEMICOLON . LexToken(IDENTIFIER,'Y',13,86)
-INFO:root:Action : Reduce rule [StatementRep -> StatementRep Statement SEMICOLON] with [<list @ 0x7f63376e6c08>,<list @ 0x7f63376ec688>,';'] and goto state 156
-INFO:root:Result : <list @ 0x7f63376ec6c8> (['StatementRep', ['StatementRep', 'epsil ...)
-DEBUG:root:
-DEBUG:root:State  : 156
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(IDENTIFIER,'Y',13,86)
-DEBUG:root:Action : Shift and goto state 234
-DEBUG:root:
-DEBUG:root:State  : 234
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER . LexToken(QUICK_ASSIGN,':=',13,87)
-DEBUG:root:Action : Shift and goto state 283
-DEBUG:root:
-DEBUG:root:State  : 283
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN . LexToken(INTEGER,5,13,90)
-DEBUG:root:Action : Shift and goto state 133
-DEBUG:root:
-DEBUG:root:State  : 133
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN INTEGER . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [5] and goto state 131
-INFO:root:Result : <list @ 0x7f63376ec908> (['BasicLit', '5'])
-DEBUG:root:
-DEBUG:root:State  : 131
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN BasicLit . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f63376ec908>] and goto state 127
-INFO:root:Result : <list @ 0x7f63376ec888> (['Literal', ['BasicLit', '5']])
-DEBUG:root:
-DEBUG:root:State  : 127
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Literal . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f63376ec888>] and goto state 121
-INFO:root:Result : <list @ 0x7f63376ec708> (['Operand', ['Literal', ['BasicLit', '5' ...)
-DEBUG:root:
-DEBUG:root:State  : 121
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Operand . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f63376ec708>] and goto state 118
-INFO:root:Result : <list @ 0x7f63376ec748> (['PrimaryExpr', ['Operand', ['Literal',  ...)
-DEBUG:root:
-DEBUG:root:State  : 118
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN PrimaryExpr . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f63376ec748>] and goto state 117
-INFO:root:Result : <list @ 0x7f6337468788> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
-DEBUG:root:
-DEBUG:root:State  : 117
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN UnaryExpr . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f6337468788>] and goto state 317
-INFO:root:Result : <list @ 0x7f63374687c8> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
-DEBUG:root:
-DEBUG:root:State  : 317
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression] with ['Y',':=',<list @ 0x7f63374687c8>] and goto state 224
-INFO:root:Result : <list @ 0x7f6337468808> (['ShortVarDecl', 'Y', ':=', ['Expression ...)
-DEBUG:root:
-DEBUG:root:State  : 224
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep ShortVarDecl . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [SimpleStmt -> ShortVarDecl] with [<list @ 0x7f6337468808>] and goto state 210
-INFO:root:Result : <list @ 0x7f6337468848> (['SimpleStmt', ['ShortVarDecl', 'Y', ':= ...)
-DEBUG:root:
-DEBUG:root:State  : 210
-DEBUG:root:Defaulted state 210: Reduce using 170
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep SimpleStmt . LexToken(SEMICOLON,';',13,91)
-INFO:root:Action : Reduce rule [Statement -> SimpleStmt] with [<list @ 0x7f6337468848>] and goto state 207
-INFO:root:Result : <list @ 0x7f6337468888> (['Statement', ['SimpleStmt', ['ShortVarD ...)
-DEBUG:root:
-DEBUG:root:State  : 207
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement . LexToken(SEMICOLON,';',13,91)
-DEBUG:root:Action : Shift and goto state 258
-DEBUG:root:
-DEBUG:root:State  : 258
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement SEMICOLON . LexToken(RCURL,'}',14,96)
-INFO:root:Action : Reduce rule [StatementRep -> StatementRep Statement SEMICOLON] with [<list @ 0x7f63376ec6c8>,<list @ 0x7f6337468888>,';'] and goto state 156
-INFO:root:Result : <list @ 0x7f63374688c8> (['StatementRep', ['StatementRep', ['Stat ...)
-DEBUG:root:
-DEBUG:root:State  : 156
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(RCURL,'}',14,96)
-INFO:root:Action : Reduce rule [StatementList -> StatementRep] with [<list @ 0x7f63374688c8>] and goto state 155
-INFO:root:Result : <list @ 0x7f6337468948> (['StatementList', ['StatementRep', ['Sta ...)
-DEBUG:root:
-DEBUG:root:State  : 155
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementList . LexToken(RCURL,'}',14,96)
-DEBUG:root:Action : Shift and goto state 206
+DEBUG:root:State  : 209
+DEBUG:root:Defaulted state 209: Reduce using 170
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep SimpleStmt . LexToken(SEMICOLON,';',28,137)
+INFO:root:Action : Reduce rule [Statement -> SimpleStmt] with [<list @ 0x7f2b2fcf5848>] and goto state 206
+INFO:root:Result : <list @ 0x7f2b2fcf5888> (['Statement', ['SimpleStmt', ['ShortVarD ...)
 DEBUG:root:
 DEBUG:root:State  : 206
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementList RCURL . LexToken(SEMICOLON,';',14,97)
-INFO:root:Action : Reduce rule [Block -> LCURL StatementList RCURL] with ['{',<list @ 0x7f6337468948>,'}'] and goto state 93
-INFO:root:Result : <list @ 0x7f6337468908> (['Blocks', '{', ['StatementList', ['Stat ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement . LexToken(SEMICOLON,';',28,137)
+DEBUG:root:Action : Shift and goto state 257
+DEBUG:root:
+DEBUG:root:State  : 257
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement SEMICOLON . LexToken(IDENTIFIER,'Y',29,143)
+INFO:root:Action : Reduce rule [StatementRep -> StatementRep Statement SEMICOLON] with [<list @ 0x7f2b2ff73388>,<list @ 0x7f2b2fcf5888>,';'] and goto state 155
+INFO:root:Result : <list @ 0x7f2b2fcf58c8> (['StatementRep', ['StatementRep', 'epsil ...)
+DEBUG:root:
+DEBUG:root:State  : 155
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(IDENTIFIER,'Y',29,143)
+DEBUG:root:Action : Shift and goto state 233
+DEBUG:root:
+DEBUG:root:State  : 233
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER . LexToken(QUICK_ASSIGN,':=',29,144)
+DEBUG:root:Action : Shift and goto state 282
+DEBUG:root:
+DEBUG:root:State  : 282
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN . LexToken(INTEGER,5,29,147)
+DEBUG:root:Action : Shift and goto state 133
+DEBUG:root:
+DEBUG:root:State  : 133
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN INTEGER . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [BasicLit -> INTEGER] with [5] and goto state 131
+INFO:root:Result : <list @ 0x7f2b2fcf5948> (['BasicLit', '5'])
+DEBUG:root:
+DEBUG:root:State  : 131
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN BasicLit . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [Literal -> BasicLit] with [<list @ 0x7f2b2fcf5948>] and goto state 127
+INFO:root:Result : <list @ 0x7f2b2fcf5988> (['Literal', ['BasicLit', '5']])
+DEBUG:root:
+DEBUG:root:State  : 127
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Literal . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [Operand -> Literal] with [<list @ 0x7f2b2fcf5988>] and goto state 121
+INFO:root:Result : <list @ 0x7f2b2fcf5908> (['Operand', ['Literal', ['BasicLit', '5' ...)
+DEBUG:root:
+DEBUG:root:State  : 121
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Operand . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [PrimaryExpr -> Operand] with [<list @ 0x7f2b2fcf5908>] and goto state 118
+INFO:root:Result : <list @ 0x7f2b2fcf59c8> (['PrimaryExpr', ['Operand', ['Literal',  ...)
+DEBUG:root:
+DEBUG:root:State  : 118
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN PrimaryExpr . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [UnaryExpr -> PrimaryExpr] with [<list @ 0x7f2b2fcf59c8>] and goto state 117
+INFO:root:Result : <list @ 0x7f2b2fcf5a08> (['UnaryExpr', ['PrimaryExpr', ['Operand' ...)
+DEBUG:root:
+DEBUG:root:State  : 117
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN UnaryExpr . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [Expression -> UnaryExpr] with [<list @ 0x7f2b2fcf5a08>] and goto state 316
+INFO:root:Result : <list @ 0x7f2b2fcf5a48> (['Expression', ['UnaryExpr', ['PrimaryEx ...)
+DEBUG:root:
+DEBUG:root:State  : 316
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep IDENTIFIER QUICK_ASSIGN Expression . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [ShortVarDecl -> IDENTIFIER QUICK_ASSIGN Expression] with ['Y',':=',<list @ 0x7f2b2fcf5a48>] and goto state 223
+INFO:root:Result : <list @ 0x7f2b2fcf5a88> (['ShortVarDecl', 'Y', ':=', ['Expression ...)
+DEBUG:root:
+DEBUG:root:State  : 223
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep ShortVarDecl . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [SimpleStmt -> ShortVarDecl] with [<list @ 0x7f2b2fcf5a88>] and goto state 209
+INFO:root:Result : <list @ 0x7f2b2fcf5ac8> (['SimpleStmt', ['ShortVarDecl', 'Y', ':= ...)
+DEBUG:root:
+DEBUG:root:State  : 209
+DEBUG:root:Defaulted state 209: Reduce using 170
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep SimpleStmt . LexToken(SEMICOLON,';',29,148)
+INFO:root:Action : Reduce rule [Statement -> SimpleStmt] with [<list @ 0x7f2b2fcf5ac8>] and goto state 206
+INFO:root:Result : <list @ 0x7f2b2fcf5b08> (['Statement', ['SimpleStmt', ['ShortVarD ...)
+DEBUG:root:
+DEBUG:root:State  : 206
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement . LexToken(SEMICOLON,';',29,148)
+DEBUG:root:Action : Shift and goto state 257
+DEBUG:root:
+DEBUG:root:State  : 257
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep Statement SEMICOLON . LexToken(RCURL,'}',30,153)
+INFO:root:Action : Reduce rule [StatementRep -> StatementRep Statement SEMICOLON] with [<list @ 0x7f2b2fcf58c8>,<list @ 0x7f2b2fcf5b08>,';'] and goto state 155
+INFO:root:Result : <list @ 0x7f2b2fcaae88> (['StatementRep', ['StatementRep', ['Stat ...)
+DEBUG:root:
+DEBUG:root:State  : 155
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementRep . LexToken(RCURL,'}',30,153)
+INFO:root:Action : Reduce rule [StatementList -> StatementRep] with [<list @ 0x7f2b2fcaae88>] and goto state 154
+INFO:root:Result : <list @ 0x7f2b2fcaaf48> (['StatementList', ['StatementRep', ['Sta ...)
+DEBUG:root:
+DEBUG:root:State  : 154
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementList . LexToken(RCURL,'}',30,153)
+DEBUG:root:Action : Shift and goto state 205
+DEBUG:root:
+DEBUG:root:State  : 205
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature LCURL StatementList RCURL . LexToken(SEMICOLON,';',30,154)
+INFO:root:Action : Reduce rule [Block -> LCURL StatementList RCURL] with ['{',<list @ 0x7f2b2fcaaf48>,'}'] and goto state 93
+INFO:root:Result : <list @ 0x7f2b2fcaaec8> (['Blocks', '{', ['StatementList', ['Stat ...)
 DEBUG:root:
 DEBUG:root:State  : 93
 DEBUG:root:Defaulted state 93: Reduce using 90
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature Block . LexToken(SEMICOLON,';',14,97)
-INFO:root:Action : Reduce rule [FunctionBody -> Block] with [<list @ 0x7f6337468908>] and goto state 92
-INFO:root:Result : <list @ 0x7f63374689c8> (['FunctionBody', ['Blocks', '{', ['State ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature Block . LexToken(SEMICOLON,';',30,154)
+INFO:root:Action : Reduce rule [FunctionBody -> Block] with [<list @ 0x7f2b2fcaaec8>] and goto state 92
+INFO:root:Result : <list @ 0x7f2b2fcaaf88> (['FunctionBody', ['Blocks', '{', ['State ...)
 DEBUG:root:
 DEBUG:root:State  : 92
 DEBUG:root:Defaulted state 92: Reduce using 89
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature FunctionBody . LexToken(SEMICOLON,';',14,97)
-INFO:root:Action : Reduce rule [Function -> Signature FunctionBody] with [<list @ 0x7f63376e6a88>,<list @ 0x7f63374689c8>] and goto state 50
-INFO:root:Result : <list @ 0x7f6337468988> (['Function', ['Signature', ['Parameters' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Signature FunctionBody . LexToken(SEMICOLON,';',30,154)
+INFO:root:Action : Reduce rule [Function -> Signature FunctionBody] with [<list @ 0x7f2b2ff73208>,<list @ 0x7f2b2fcaaf88>] and goto state 50
+INFO:root:Result : <list @ 0x7f2b2fcaaf08> (['Function', ['Signature', ['Parameters' ...)
 DEBUG:root:
 DEBUG:root:State  : 50
 DEBUG:root:Defaulted state 50: Reduce using 86
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Function . LexToken(SEMICOLON,';',14,97)
-INFO:root:Action : Reduce rule [FunctionDecl -> FUNC FunctionName Function] with ['func',<list @ 0x7f63376e6708>,<list @ 0x7f6337468988>] and goto state 16
-INFO:root:Result : <list @ 0x7f6337468a08> (['FunctionDecl', 'func', ['FunctionName' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FUNC FunctionName Function . LexToken(SEMICOLON,';',30,154)
+INFO:root:Action : Reduce rule [FunctionDecl -> FUNC FunctionName Function] with ['func',<list @ 0x7f2b2ff730c8>,<list @ 0x7f2b2fcaaf08>] and goto state 16
+INFO:root:Result : <list @ 0x7f2b2fcaa1c8> (['FunctionDecl', 'func', ['FunctionName' ...)
 DEBUG:root:
 DEBUG:root:State  : 16
 DEBUG:root:Defaulted state 16: Reduce using 55
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FunctionDecl . LexToken(SEMICOLON,';',14,97)
-INFO:root:Action : Reduce rule [TopLevelDecl -> FunctionDecl] with [<list @ 0x7f6337468a08>] and goto state 14
-INFO:root:Result : <list @ 0x7f6337468a48> (['TopLevelDecl', ['FunctionDecl', 'func' ...)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep FunctionDecl . LexToken(SEMICOLON,';',30,154)
+INFO:root:Action : Reduce rule [TopLevelDecl -> FunctionDecl] with [<list @ 0x7f2b2fcaa1c8>] and goto state 14
+INFO:root:Result : <list @ 0x7f2b2fcaafc8> (['TopLevelDecl', ['FunctionDecl', 'func' ...)
 DEBUG:root:
 DEBUG:root:State  : 14
-DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TopLevelDecl . LexToken(SEMICOLON,';',14,97)
+DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TopLevelDecl . LexToken(SEMICOLON,';',30,154)
 DEBUG:root:Action : Shift and goto state 31
 DEBUG:root:
 DEBUG:root:State  : 31
 DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep TopLevelDecl SEMICOLON . $end
-INFO:root:Action : Reduce rule [TopLevelDeclRep -> TopLevelDeclRep TopLevelDecl SEMICOLON] with [<list @ 0x7f63376e6908>,<list @ 0x7f6337468a48>,';'] and goto state 10
-INFO:root:Result : <list @ 0x7f6337468a88> (['TopLevelDeclRep', ['TopLevelDeclRep',  ...)
+INFO:root:Action : Reduce rule [TopLevelDeclRep -> TopLevelDeclRep TopLevelDecl SEMICOLON] with [<list @ 0x7f2b2ff71f08>,<list @ 0x7f2b2fcaafc8>,';'] and goto state 10
+INFO:root:Result : <list @ 0x7f2b2fcaa088> (['TopLevelDeclRep', ['TopLevelDeclRep',  ...)
 DEBUG:root:
 DEBUG:root:State  : 10
 DEBUG:root:Stack  : PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep . $end
-INFO:root:Action : Reduce rule [SourceFile -> PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep] with [<list @ 0x7f633951e108>,';',<list @ 0x7f63376e6548>,<list @ 0x7f6337468a88>] and goto state 2
-INFO:root:Result : <list @ 0x7f6337468b08> (['SourceFile', ['PackageClause', 'packag ...)
+INFO:root:Action : Reduce rule [SourceFile -> PackageClause SEMICOLON ImportDeclRep TopLevelDeclRep] with [<list @ 0x7f2b31daa108>,';',<list @ 0x7f2b2ff71548>,<list @ 0x7f2b2fcaa088>] and goto state 2
+INFO:root:Result : <list @ 0x7f2b2fcaa2c8> (['SourceFile', ['PackageClause', 'packag ...)
 DEBUG:root:
 DEBUG:root:State  : 2
 DEBUG:root:Defaulted state 2: Reduce using 1
 DEBUG:root:Stack  : SourceFile . $end
-INFO:root:Action : Reduce rule [start -> SourceFile] with [<list @ 0x7f6337468b08>] and goto state 1
-INFO:root:Result : <list @ 0x7f6337468ac8> (['start', ['SourceFile', ['PackageClause ...)
+INFO:root:Action : Reduce rule [start -> SourceFile] with [<list @ 0x7f2b2fcaa2c8>] and goto state 1
+INFO:root:Result : <list @ 0x7f2b2fcaa148> (['start', ['SourceFile', ['PackageClause ...)
 DEBUG:root:
 DEBUG:root:State  : 1
 DEBUG:root:Stack  : start . $end
-INFO:root:Done   : Returning <list @ 0x7f6337468ac8> (['start', ['SourceFile', ['PackageClause ...)
+INFO:root:Done   : Returning <list @ 0x7f2b2fcaa148> (['start', ['SourceFile', ['PackageClause ...)
 INFO:root:PLY: PARSE DEBUG END
