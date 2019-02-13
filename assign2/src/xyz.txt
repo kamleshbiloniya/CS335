@@ -1,0 +1,28 @@
+LexToken(PACKAGE,'package',2,21)
+LexToken(IDENTIFIER,'main',2,29)
+LexToken(SEMICOLON,';',2,33)
+LexToken(IMPORT,'import',3,35)
+LexToken(STRING,'fmt',3,42)
+LexToken(SEMICOLON,';',3,47)
+LexToken(FUNC,'func',4,49)
+LexToken(IDENTIFIER,'main',4,54)
+LexToken(LPAREN,'(',4,58)
+LexToken(RPAREN,')',4,59)
+LexToken(LCURL,'{',4,61)
+LexToken(IDENTIFIER,'X',5,67)
+LexToken(QUICK_ASSIGN,':=',5,68)
+LexToken(INTEGER,2,5,71)
+LexToken(STAR,'*',5,72)
+LexToken(INTEGER,3,5,73)
+LexToken(SEMICOLON,';',5,74)
+LexToken(RCURL,'}',6,79)
+LexToken(SEMICOLON,';',6,80)
+None
+// This is a comment
+package main;
+import "fmt";
+func main() {
+    X:= 2*3;   
+};
+
+['start', ['SourceFile', ['PackageClause', 'package', ['PackageName', 'main']], ';', ['ImportDeclRep', ['ImportDeclRep', 'epsilon'], ['ImportDecl', 'import', ['ImportSpec', ['PackageNameDotOpt', 'epsilon'], ['ImportPath', 'fmt']]], ';'], ['TopLevelDeclRep', ['TopLevelDeclRep', 'epsilon'], ['TopLevelDecl', ['FunctionDecl', 'func', ['FunctionName', 'main'], ['Function', ['Signature', ['Parameters', '(', ['ParameterListOpt', 'epsilon'], ')'], ['ResultOpt', 'epsilon']], ['FunctionBody', ['Blocks', '{', ['StatementList', ['StatementRep', ['StatementRep', 'epsilon'], ['Statement', ['SimpleStmt', ['ShortVarDecl', 'X', ':=', ['Expression', ['Expression', ['UnaryExpr', ['PrimaryExpr', ['Operand', ['Literal', ['BasicLit', '2']]]]]], ['BinaryOp', ['AddMulOp', ['UnaryOp', '*']]], ['Expression', ['UnaryExpr', ['PrimaryExpr', ['Operand', ['Literal', ['BasicLit', '3']]]]]]]]]], ';']], '}']]]]], ';']]]

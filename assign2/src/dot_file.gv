@@ -1,0 +1,175 @@
+digraph G {
+ 1[label="start"]
+2[label="SourceFile"]
+3[label="PackageClause"]
+4[label="package"]
+5[label="PackageClause"]
+6[label="PackageName"]
+7[label="main"]
+8[label="SourceFile"]
+9[label=";"]
+10[label="SourceFile"]
+11[label="ImportDeclRep"]
+12[label="ImportDeclRep"]
+13[label="epsilon"]
+14[label="ImportDeclRep"]
+15[label="ImportDecl"]
+16[label="import"]
+17[label="ImportDecl"]
+18[label="ImportSpec"]
+19[label="PackageNameDotOpt"]
+20[label="epsilon"]
+21[label="ImportSpec"]
+22[label="ImportPath"]
+23[label="fmt"]
+24[label="ImportDeclRep"]
+25[label=";"]
+26[label="SourceFile"]
+27[label="TopLevelDeclRep"]
+28[label="TopLevelDeclRep"]
+29[label="epsilon"]
+30[label="TopLevelDeclRep"]
+31[label="TopLevelDecl"]
+32[label="FunctionDecl"]
+33[label="func"]
+34[label="FunctionDecl"]
+35[label="FunctionName"]
+36[label="main"]
+37[label="FunctionDecl"]
+38[label="Function"]
+39[label="Signature"]
+40[label="Parameters"]
+41[label="("]
+42[label="Parameters"]
+43[label="ParameterListOpt"]
+44[label="epsilon"]
+45[label="Parameters"]
+46[label=")"]
+47[label="Signature"]
+48[label="ResultOpt"]
+49[label="epsilon"]
+50[label="Function"]
+51[label="FunctionBody"]
+52[label="Blocks"]
+53[label="{"]
+54[label="Blocks"]
+55[label="StatementList"]
+56[label="StatementRep"]
+57[label="StatementRep"]
+58[label="StatementRep"]
+59[label="epsilon"]
+60[label="StatementRep"]
+61[label="Statement"]
+62[label="SimpleStmt"]
+63[label="ShortVarDecl"]
+64[label="X"]
+65[label="ShortVarDecl"]
+66[label=":="]
+67[label="ShortVarDecl"]
+68[label="Expression"]
+69[label="Expression"]
+70[label="UnaryExpr"]
+71[label="PrimaryExpr"]
+72[label="Operand"]
+73[label="Literal"]
+74[label="BasicLit"]
+75[label="2"]
+76[label="Expression"]
+77[label="BinaryOp"]
+78[label="AddMulOp"]
+79[label="UnaryOp"]
+80[label="*"]
+81[label="Expression"]
+82[label="Expression"]
+83[label="Expression"]
+84[label="UnaryExpr"]
+85[label="PrimaryExpr"]
+86[label="Operand"]
+87[label="Literal"]
+88[label="BasicLit"]
+89[label="3"]
+90[label="Expression"]
+91[label="BinaryOp"]
+92[label="AddMulOp"]
+93[label="UnaryOp"]
+94[label="+"]
+95[label="Expression"]
+96[label="Expression"]
+97[label="Expression"]
+98[label="UnaryExpr"]
+99[label="PrimaryExpr"]
+100[label="Operand"]
+101[label="Literal"]
+102[label="BasicLit"]
+103[label="5"]
+104[label="Expression"]
+105[label="BinaryOp"]
+106[label="AddMulOp"]
+107[label="UnaryOp"]
+108[label="*"]
+109[label="Expression"]
+110[label="Expression"]
+111[label="UnaryExpr"]
+112[label="PrimaryExpr"]
+113[label="Operand"]
+114[label="Literal"]
+115[label="BasicLit"]
+116[label="7"]
+117[label="StatementRep"]
+118[label=";"]
+119[label="StatementRep"]
+120[label="Statement"]
+121[label="SimpleStmt"]
+122[label="ShortVarDecl"]
+123[label="Y"]
+124[label="ShortVarDecl"]
+125[label=":="]
+126[label="ShortVarDecl"]
+127[label="Expression"]
+128[label="UnaryExpr"]
+129[label="PrimaryExpr"]
+130[label="Operand"]
+131[label="Literal"]
+132[label="BasicLit"]
+133[label="5"]
+134[label="StatementRep"]
+135[label=";"]
+136[label="Blocks"]
+137[label="}"]
+138[label="TopLevelDeclRep"]
+139[label=";"]
+
+1 -> 2 -> 3 -> 4;
+3 -> 5 -> 6 -> 7;
+2 -> 8 -> 9;
+2 -> 10 -> 11 -> 12 -> 13;
+11 -> 14 -> 15 -> 16;
+15 -> 17 -> 18 -> 19 -> 20;
+18 -> 21 -> 22 -> 23;
+11 -> 24 -> 25;
+2 -> 26 -> 27 -> 28 -> 29;
+27 -> 30 -> 31 -> 32 -> 33;
+32 -> 34 -> 35 -> 36;
+32 -> 37 -> 38 -> 39 -> 40 -> 41;
+40 -> 42 -> 43 -> 44;
+40 -> 45 -> 46;
+39 -> 47 -> 48 -> 49;
+38 -> 50 -> 51 -> 52 -> 53;
+52 -> 54 -> 55 -> 56 -> 57 -> 58 -> 59;
+57 -> 60 -> 61 -> 62 -> 63 -> 64;
+63 -> 65 -> 66;
+63 -> 67 -> 68 -> 69 -> 70 -> 71 -> 72 -> 73 -> 74 -> 75;
+68 -> 76 -> 77 -> 78 -> 79 -> 80;
+68 -> 81 -> 82 -> 83 -> 84 -> 85 -> 86 -> 87 -> 88 -> 89;
+82 -> 90 -> 91 -> 92 -> 93 -> 94;
+82 -> 95 -> 96 -> 97 -> 98 -> 99 -> 100 -> 101 -> 102 -> 103;
+96 -> 104 -> 105 -> 106 -> 107 -> 108;
+96 -> 109 -> 110 -> 111 -> 112 -> 113 -> 114 -> 115 -> 116;
+57 -> 117 -> 118;
+56 -> 119 -> 120 -> 121 -> 122 -> 123;
+122 -> 124 -> 125;
+122 -> 126 -> 127 -> 128 -> 129 -> 130 -> 131 -> 132 -> 133;
+56 -> 134 -> 135;
+52 -> 136 -> 137;
+27 -> 138 -> 139;
+}
