@@ -1,0 +1,64 @@
+var 1 = var2
+
+                three_ac = [p[1].placeList[x], " ", "=", p[4].placeList[x]]
+
+
+        p[0].code.append(['label', " ", ":", label])
+
+            p[0].code.append([newPlace3, p[3].placeList[0], 'op', newPlace4])
+
+            p[0].code.append([newPlace2, " ", '*', newPlace])
+
+                    p[0].code.append(['push', " ",  " ", x])
+
+                p[0].code.append(['callvoid', " ", " ", info['label']])
+
+                p[0].code.append(["condition", p[1].placeList[0], p[2], p[3].placeList[0] ])
+
+            p[0].code.append([newPlace, " ", "!", p[2].placeList[0]])
+
+        p[0].code.append(['print', ' ', ' ', p[2].placeList[0]])
+
+        p[0].code.append(['scan', ' ' , ' ', p[2].placeList[0]])
+
+                  p[0].code.append(['load', ' ', p[1].extra['AddrList'][x], p[1].placeList[x]])
+
+      p[0].code.append(['goto', ' ', ' ', lab])
+      p[0].code += [['ifgoto',' ', newVar, label1]]
+
+
+        p[0].code.append(["retint", ' ', ' ', p[2].placeList[0]])
+
+        p[0].code.append(["retvoid", ' ', ' ', ' '])
+
+
+
+# Corresponds to 4 operand instructions
+# x is multiply and * is dereference
+type_4 = ['+', '-', 'x', '/', '%', '&', '|', '^', '==', '<', '>', '!=', '<=', '>=']
+
+# Corresponds to 3 operand instructions
+type_3 = ['=', '+=', '-=', 'x=', '&=',
+          '|=', '^=', '<<=', '>>=',
+           'ifgoto', 'callint', 'load', 'store', 'array', 'pload', 'addr']
+
+# Corresponds to 2 operand instructions
+type_2 = ['++', '!', '--', 'label', 'printint', 'printstr', 'scan', 'callvoid', 'goto', 'retint', 'push', 'pop']
+
+type_1 = ['retvoid']
+
+type_x = 
+
+
+3ac[2] in type_4 ? same
+3ac[0] in type_3 ? same
+3ac[0] in type_2 ?
+
+
+
+count,var1 , var2 , + , var3
+
+
+
+x = 5
+

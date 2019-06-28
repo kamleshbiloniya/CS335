@@ -1,0 +1,47 @@
+1,goto, , ,label0
+2,label, ,:,label0
+3,pop,,0,var39
+4,pop,,1,var40
+5,push,,,var40
+6,push,,,var39
+7,var2,,=,40
+8,array,,var3,var2
+9,var4, ,=,8
+10,var5, ,=,4
+11,var6,var4,x,var5
+12,var7,var3,+,var6
+13,var9, ,=,7
+14,var8,,=,var9
+15,store,,var7,var8
+16,var10, ,=,3
+17,var11, ,=,4
+18,var12,var10,x,var11
+19,var13,var3,+,var12
+20,var15, ,=,9
+21,var14,,=,var15
+22,store,,var13,var14
+23,var16, ,=,5
+24,var17, ,=,4
+25,var18,var16,x,var17
+26,var19,var3,+,var18
+27,var21, ,=,30
+28,var20,,=,var21
+29,store,,var19,var20
+30,var22, ,=,8
+31,var23, ,=,4
+32,var24,var22,x,var23
+33,var25,var3,+,var24
+34,load,,var26,var25
+35,var27, ,=,3
+36,var28, ,=,4
+37,var29,var27,x,var28
+38,var30,var3,+,var29
+39,load,,var31,var30
+40,var32,var26,-,var31
+41,var33, ,=,5
+42,var34, ,=,4
+43,var35,var33,x,var34
+44,var36,var3,+,var35
+45,load,,var37,var36
+46,var38,var32,+,var37
+47,printint, , ,var38
