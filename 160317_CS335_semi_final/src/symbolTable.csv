@@ -1,0 +1,27 @@
+ TableId , Identifier , place , type , value , width , offset , childTableId ,parentTableId
+3,age,var10,int, ,4,4, ,0
+3,var11, ,temporary, ,0,4, ,0
+3,var10, ,temporary, ,0,0, ,0
+3,name,var11,string, ,0,4, ,0
+0,person, , , , , ,3,None
+4,number,var13,int,5,4,8, ,0
+4,var15, ,temporary, ,0,8, ,0
+4,var14, ,void, ,0,8, ,0
+4,result,var14,void, ,0,8, ,0
+4,var13, ,int, ,4,4, ,0
+4,var12, ,temporary, ,0,0, ,0
+0,main, , , , , ,4,None
+1,a,var0,int, ,4,4, ,0
+1,var5, ,temporary, ,0,5, ,0
+1,var7, ,temporary, ,0,5, ,0
+1,var6, ,temporary, ,0,5, ,0
+1,var1, ,temporary, ,0,4, ,0
+1,var0, ,temporary, ,0,0, ,0
+1,var3, ,bool,1,1,5, ,0
+1,var2, ,temporary, ,0,4, ,0
+1,var9, ,temporary, ,0,9, ,0
+1,var8, ,int,1,4,9, ,0
+1,x,var1,, ,0,4, ,0
+2,var4, ,temporary, ,0,0, ,1
+1,if1, , , , , ,2,0
+0,fact, , , , , ,1,None
